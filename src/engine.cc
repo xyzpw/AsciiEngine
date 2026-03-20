@@ -324,6 +324,14 @@ namespace AsciiEngine
 		}
 	}
 
+	void Engine::sortObjectsByLayer()
+	{
+		std::sort(asciiObjects.begin(), asciiObjects.end(),
+			  [](auto &a, auto &b) {
+				return a->layer < b->layer;
+			  });
+	}
+
 	void Engine::updateAllBehaviours()
 	{
 		callOnBehaviours(&Behaviour::update);

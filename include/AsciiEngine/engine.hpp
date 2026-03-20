@@ -164,6 +164,9 @@ namespace AsciiEngine
 		std::vector<std::function<void()>> onQuitFns;
 		unsigned int objectCounter = 0;
 
+		// sort global objects list in ascending order by their layer
+		void sortObjectsByLayer();
+
 		void renderScene();
 		void drawObjectSprites();
 

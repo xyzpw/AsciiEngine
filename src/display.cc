@@ -31,11 +31,7 @@ namespace AsciiEngine
 
 	void Engine::drawObjectSprites()
 	{
-		/* sort layers in ascending order */
-		std::sort(asciiObjects.begin(), asciiObjects.end(),
-			  [](auto &a, auto &b) {
-				return a->layer < b->layer;
-			  });
+		sortObjectsByLayer();
 
 		/* draw to screen */
 		callOnAllActiveObjects([&](AsciiObject *it) {
