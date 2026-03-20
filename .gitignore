@@ -1,0 +1,7 @@
+games/
+build/*
+*.so
+
+tests/*
+!tests/*.*
+!tests/Makefile
