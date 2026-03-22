@@ -42,6 +42,7 @@ namespace AsciiEngine
 		bool isInDisplay(const Math::Vector2 &v);
 
 		int currentFrame = 0;
+		float deltaTime;
 		bool currentlyInFrame = false;
 		Scene* activeScene;
 
