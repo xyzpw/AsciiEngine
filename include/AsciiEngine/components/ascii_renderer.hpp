@@ -15,6 +15,7 @@ namespace AsciiEngine
 		int row;
 
 		Sprite sprite;
+		Sprite *animationSprite = nullptr;
 		std::optional<int> colorPairId;
 
 		AsciiRenderer(int x, int y, std::vector<std::string> rows)
