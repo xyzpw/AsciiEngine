@@ -1,9 +1,8 @@
 #include "AsciiEngine/components/ascii_renderer.hpp"
 #include "AsciiEngine/common/color.hpp"
 #include "AsciiEngine/utils/colors.hpp"
+#include "AsciiEngine/utils/display.hpp"
 #include "AsciiEngine/engine.hpp"
-#include <ncurses.h>
-#include <string>
 
 namespace AsciiEngine
 {
@@ -15,18 +14,7 @@ namespace AsciiEngine
 			attron(COLOR_PAIR(colorPairId.value()));
 		}
 
-		int lines = sprite.height();
-		for (int i = 0; i < lines; ++i) {
-			const std::string &px = sprite.pixels[i];
-			int pxSize = px.size();
-
-			for (int j = 0; j < pxSize; ++j) {
-				const char &c = px[j];
-
-				if (c != ' ')
-					mvprintw(row + i, col + j, "%c", c);
-			}
-		}
+		Utils::mvprintwSprite(col, row, *getSprite());
 
 		if (hasCol) {
 			attroff(COLOR_PAIR(colorPairId.value()));

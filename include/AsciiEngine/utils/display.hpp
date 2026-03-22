@@ -2,6 +2,7 @@
 
 #include "AsciiEngine/components/ascii_renderer.hpp"
 #include "AsciiEngine/math/vector2.hpp"
+#include "AsciiEngine/common/sprite.hpp"
 
 namespace AsciiEngine
 {
@@ -28,4 +29,15 @@ namespace AsciiEngine::Utils
 	 * return: true if the object has a renderer and it is visible
 	 */
 	bool hasVisibleRenderer(AsciiObject *a);
+
+	/*
+	 * Prints each char one-by-one instead of a whole string,
+	 * ignores spaces but keeps the positioning correct.
+	 */
+	void mvprintwEachChar(int col, int row, const std::string &str);
+
+	/*
+	 * prints the sprite
+	 */
+	void mvprintwSprite(int col, int row, const Sprite &spr);
 }
