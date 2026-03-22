@@ -28,6 +28,9 @@ namespace AsciiEngine
 
 		void render();
 
+		Sprite* getSprite();
+		const Sprite* getSprite() const;
+
 		void setColor(Color fg, Color bg = Color::None);
 		void clearColor() { colorPairId = std::nullopt; }
 		Color getFgColor();

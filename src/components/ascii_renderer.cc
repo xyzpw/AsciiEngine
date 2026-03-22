@@ -54,4 +54,18 @@ namespace AsciiEngine
 
 		return colorRegistry[colorPairId.value()].bg;
 	}
+
+	Sprite* AsciiRenderer::getSprite()
+	{
+		if (animationSprite == nullptr)
+			return &sprite;
+		return animationSprite;
+	}
+
+	const Sprite* AsciiRenderer::getSprite() const
+	{
+		if (animationSprite == nullptr)
+			return &sprite;
+		return animationSprite;
+	}
 }
