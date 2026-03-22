@@ -170,6 +170,9 @@ namespace AsciiEngine
 
 		void renderScene();
 		void drawObjectSprites();
+		// display and update animations
+		void handleAnimations();
+
 		void checkSpriteColliders();
 
 		void processAllControllers();

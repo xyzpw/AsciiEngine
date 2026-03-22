@@ -13,6 +13,8 @@
 #include "components/behaviour.hpp"
 #include "components/conditional_action.hpp"
 #include "components/controller.hpp"
+#include "components/ascii_collider.hpp"
+#include "components/ascii_animation.hpp"
 #include "core/component.hpp"
 #include "core/key_action.hpp"
 #include "core/timer.hpp"
@@ -29,5 +31,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	const std::string version = "0.1";
+	const std::string version = "0.2.0";
 }

@@ -110,6 +110,7 @@ namespace AsciiEngine
 			}
 
 			processAllControllers();
+			handleAnimations();
 			checkSpriteColliders();
 			processAllConditionalActions();
 
