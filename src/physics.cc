@@ -1,6 +1,7 @@
 #include "AsciiEngine/engine.hpp"
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/components/ascii_renderer.hpp"
+#include "AsciiEngine/components/ascii_collider.hpp"
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/math/ray.hpp"
 #include "AsciiEngine/physics/raycast_hit.hpp"
@@ -116,5 +117,41 @@ namespace AsciiEngine
 				});
 
 		return hits;
+	}
+
+	void Engine::checkSpriteColliders()
+	{
+		auto hasComp = [&](AsciiObject *ao) {
+			auto c = ao->getComponent<AsciiCollider>();
+			return c != nullptr && c->isEnabled()
+				&& Utils::hasVisibleRenderer(ao);
+		};
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto collider = ao->getComponent<AsciiCollider>();
+			auto rendA = ao->getComponent<AsciiRenderer>();
+
+			auto &hits = collider->getContacts();
+			hits.clear();
+
+			callOnAllActiveObjects([&](AsciiObject *contact) {
+				if (contact == ao)
+					return;
+				else if (ao->layer != contact->layer)
+					return;
+
+				auto rendB = contact->getComponent<AsciiRenderer>();
+
+				if (Utils::spritesOverlap(rendA, rendB)) {
+					hits.push_back(contact);
+				}
+			}, hasComp);
+		}, hasComp);
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto coll = ao->getComponent<AsciiCollider>();
+			if (coll->hasContacts())
+				coll->onContact();
+		}, hasComp);
 	}
 }

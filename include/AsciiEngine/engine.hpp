@@ -169,6 +169,7 @@ namespace AsciiEngine
 
 		void renderScene();
 		void drawObjectSprites();
+		void checkSpriteColliders();
 
 		void processAllControllers();
 		void processAllConditionalActions();

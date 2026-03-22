@@ -110,6 +110,7 @@ namespace AsciiEngine
 			}
 
 			processAllControllers();
+			checkSpriteColliders();
 			processAllConditionalActions();
 
 			callOnBehaviours(&Behaviour::tryStart);
