@@ -42,8 +42,8 @@ namespace AsciiEngine::Utils
 
 	bool spritesOverlap(const AsciiRenderer *a, const AsciiRenderer *b)
 	{
-		const Sprite &sprA = a->sprite;
-		const Sprite &sprB = b->sprite;
+		const Sprite &sprA = *a->getSprite();
+		const Sprite &sprB = *b->getSprite();
 
 		int left = std::max(a->col, b->col);
 		int right = std::min(a->col + sprA.width(),  b->col + sprB.width());
