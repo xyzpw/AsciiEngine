@@ -146,6 +146,7 @@ namespace AsciiEngine
 		AsciiObject* getAsciiObjectAt(const Math::Vector2 &v);
 
 		std::vector<AsciiObject*> getAllAsciiObjects();
+		std::vector<AsciiObject*> getAllAsciiObjectsByName(const std::string &name);
 		AsciiObject* getAsciiObjectByName(const std::string &name);
 		AsciiObject* getAsciiObjectById(int id);
 

@@ -294,6 +294,20 @@ namespace AsciiEngine
 		return result;
 	}
 
+	std::vector<AsciiObject*> Engine::getAllAsciiObjectsByName(const std::string &name)
+	{
+		std::vector<AsciiObject*> result;
+
+		for (unsigned int i = 0; i < asciiObjects.size(); ++i) {
+			AsciiObject *ao = asciiObjects[i].get();
+
+			if (ao->name == name)
+				result.push_back(ao);
+		}
+
+		return result;
+	}
+
 	AsciiObject* Engine::getAsciiObjectByName(const std::string &name)
 	{
 		for (auto &ao : asciiObjects) {
