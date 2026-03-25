@@ -31,7 +31,7 @@ namespace AsciiEngine
 			return;
 
 		playing = true;
-		loop = loop;
+		this->loop = loop;
 	}
 
 	void AsciiAnimation::stop()
