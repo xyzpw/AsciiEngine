@@ -31,6 +31,7 @@ namespace AsciiEngine
 		AsciiAnimation(std::string name, std::vector<Sprite> sprites,
 				float duration);
 
+		void play();
 		void play(bool loop = false);
 		void stop();
 		// stop and reset animation

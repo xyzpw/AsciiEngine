@@ -25,6 +25,14 @@ namespace AsciiEngine
 		frames.emplace_back(frame, duration);
 	}
 
+	void AsciiAnimation::play()
+	{
+		if (!Utils::hasVisibleRenderer(owner))
+			return;
+
+		playing = true;
+	}
+
 	void AsciiAnimation::play(bool loop)
 	{
 		if (!Utils::hasVisibleRenderer(owner))
