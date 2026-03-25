@@ -49,7 +49,7 @@ namespace AsciiEngine
 		/* create an empty ascii object */
 		AsciiObject* createAsciiObject();
 		// create ascii object with a name
-		AsciiObject* createAsciiObject(std::string name);
+		AsciiObject* createAsciiObject(const std::string &name);
 		/* create ascii object with a sprite renderer component */
 		AsciiObject* createAsciiObject(int col, int row, const Sprite &sprite);
 		/*
@@ -146,7 +146,7 @@ namespace AsciiEngine
 		AsciiObject* getAsciiObjectAt(const Math::Vector2 &v);
 
 		std::vector<AsciiObject*> getAllAsciiObjects();
-		AsciiObject* getAsciiObjectByName(std::string name);
+		AsciiObject* getAsciiObjectByName(const std::string &name);
 		AsciiObject* getAsciiObjectById(int id);
 
 	private:

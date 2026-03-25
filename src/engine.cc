@@ -179,7 +179,7 @@ namespace AsciiEngine
 		return asciiObjects.back().get();
 	}
 
-	AsciiObject* Engine::createAsciiObject(std::string name)
+	AsciiObject* Engine::createAsciiObject(const std::string &name)
 	{
 		auto obj = std::make_unique<AsciiObject>();
 
@@ -294,7 +294,7 @@ namespace AsciiEngine
 		return result;
 	}
 
-	AsciiObject* Engine::getAsciiObjectByName(std::string name)
+	AsciiObject* Engine::getAsciiObjectByName(const std::string &name)
 	{
 		for (auto &ao : asciiObjects) {
 			if (ao->name == name)
