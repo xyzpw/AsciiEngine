@@ -41,6 +41,8 @@ namespace AsciiEngine
 		bool isInDisplay(int col, int row);
 		bool isInDisplay(const Math::Vector2 &v);
 
+		bool isRunning() { return running; }
+
 		int currentFrame = 0;
 		float deltaTime;
 		bool currentlyInFrame = false;
