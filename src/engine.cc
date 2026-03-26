@@ -87,7 +87,6 @@ namespace AsciiEngine
 				} else if (prevKeyIsCurrent) {
 					keyDownTime += dt;
 				} else {
-					runAfterFrame([&]() { previousKeyDown = keyDown; });
 					keyDownTime = 0.0f;
 				}
 
@@ -128,6 +127,8 @@ namespace AsciiEngine
 				napms(sleepTimeMs);
 
 			lateUpdateAllBehaviours();
+
+			previousKeyDown = delayedKeyDown;
 
 			frameTimer.stop();
 			deltaTime = frameTimer.elapsed().count();
