@@ -36,6 +36,9 @@ namespace AsciiEngine
 
 	void Engine::run()
 	{
+		if (running)
+			return;
+
 		running = true;
 
 		setlocale(LC_ALL, "");
