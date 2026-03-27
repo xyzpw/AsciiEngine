@@ -105,6 +105,17 @@ namespace AsciiEngine
 			return cmp != nullptr;
 		}
 
+		template<typename T>
+		bool hasEnabledComponent()
+		{
+			auto *cmp = getComponent<T>();
+
+			if (cmp != nullptr)
+				return cmp->isEnabled();
+
+			return false;
+		}
+
 	private:
 		AsciiObject& operator=(const AsciiObject&) = delete;
 
