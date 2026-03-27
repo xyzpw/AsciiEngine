@@ -48,6 +48,8 @@ namespace AsciiEngine
 		bool currentlyInFrame = false;
 		Scene* activeScene;
 
+		Math::Vector2 gravity = Math::Vector2(0, 9.80665f);
+
 		/* create an empty ascii object */
 		AsciiObject* createAsciiObject();
 		// create ascii object with a name
@@ -178,6 +180,7 @@ namespace AsciiEngine
 		void handleAnimations();
 
 		void checkSpriteColliders();
+		void checkPhysicsBodies();
 
 		void processAllControllers();
 		void processAllConditionalActions();

@@ -2,15 +2,18 @@
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/components/ascii_renderer.hpp"
 #include "AsciiEngine/components/ascii_collider.hpp"
+#include "AsciiEngine/components/ascii_body.hpp"
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/math/ray.hpp"
 #include "AsciiEngine/physics/raycast_hit.hpp"
 #include "AsciiEngine/utils/display.hpp"
+#include "AsciiEngine/utils/math.hpp"
 #include <functional>
 #include <algorithm>
 
 using namespace AsciiEngine::Math;
 using namespace AsciiEngine::Physics;
+using namespace AsciiEngine::Utils;
 
 namespace AsciiEngine
 {
@@ -153,5 +156,101 @@ namespace AsciiEngine
 			if (coll->hasContacts())
 				coll->onContact();
 		}, hasComp);
+	}
+
+	void Engine::checkPhysicsBodies()
+	{
+		auto cond = [&](AsciiObject *a) {
+			if (deltaTime <= 0)
+				return false;
+
+			return a->hasEnabledComponent<AsciiBody>();
+		};
+
+		/* set sprite position */
+		auto tryFixSprite = [&](AsciiObject *a) {
+			auto *rend = a->getComponent<AsciiRenderer>();
+			auto *body = a->getComponent<AsciiBody>();
+
+			if (rend == nullptr)
+				return;
+
+			rend->col = body->bounds.left();
+			rend->row = body->bounds.top();
+		};
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			tryFixSprite(ao);
+		}, cond);
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto *body = ao->getComponent<AsciiBody>();
+			Bounds &bounds = body->bounds;
+			auto &pos = body->getPosition();
+			auto &size = body->getSize();
+			auto &velocity = body->velocity;
+
+			if (body->isStatic)
+				return;
+
+			// change velocity due to gravity
+			velocity.y += gravity.y * body->gravityModifier * deltaTime;
+
+			float dx = velocity.x * deltaTime;
+			Bounds moved = bounds;
+			moved.position.x += dx;
+
+			bool finished = false;
+			callOnAllActiveObjects([&](AsciiObject *other) {
+				if (ao == other || finished)
+					return;
+
+				auto *otherBody = other->getComponent<AsciiBody>();
+				auto &otherBounds = otherBody->bounds;
+
+				if (!boundsOverlap(moved, otherBounds))
+					return;
+
+				if (dx > 0) {
+					float f = otherBounds.left() -
+						size.x;
+					moved.position.x = f;
+				} else if (dx < 0) {
+					moved.position.x = otherBounds.right();
+				}
+
+				velocity.x = 0;
+				finished = true;
+			}, cond);
+			finished = false;
+
+			pos.x = moved.position.x;
+			float dy = velocity.y * deltaTime;
+			moved = bounds;
+			moved.position.y += dy;
+
+			callOnAllActiveObjects([&](AsciiObject *other) {
+				if (ao == other || finished)
+					return;
+
+				auto *otherBody = other->getComponent<AsciiBody>();
+				auto &otherBounds = otherBody->bounds;
+
+				if (!boundsOverlap(moved, otherBounds))
+					return;
+
+				if (dy > 0) {
+					moved.position.y = otherBounds.top()
+						- size.y;
+				} else if (dy < 0) {
+					moved.position.y = otherBounds.bottom();
+				}
+
+				velocity.y = 0;
+				finished = true;
+			}, cond);
+
+			pos.y = moved.position.y;
+		}, cond);
 	}
 }

@@ -15,6 +15,7 @@
 #include "components/controller.hpp"
 #include "components/ascii_collider.hpp"
 #include "components/ascii_animation.hpp"
+#include "components/ascii_body.hpp"
 #include "components/hud.hpp"
 #include "core/component.hpp"
 #include "core/key_action.hpp"
@@ -24,6 +25,7 @@
 #include "utils/display.hpp"
 #include "math/vector2.hpp"
 #include "math/ray.hpp"
+#include "math/bounds.hpp"
 #include "physics/raycast_hit.hpp"
 // IWYU pragma: end_keep
 
@@ -32,5 +34,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	const std::string version = "0.2.0";
+	const std::string version = "0.3.0";
 }
