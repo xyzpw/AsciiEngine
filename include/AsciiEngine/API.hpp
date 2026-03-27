@@ -15,6 +15,7 @@
 #include "components/controller.hpp"
 #include "components/ascii_collider.hpp"
 #include "components/ascii_animation.hpp"
+#include "components/hud.hpp"
 #include "core/component.hpp"
 #include "core/key_action.hpp"
 #include "core/timer.hpp"

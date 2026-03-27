@@ -120,6 +120,7 @@ namespace AsciiEngine
 			updateAllBehaviours();
 
 			renderScene();
+			renderHud();
 			drawObjectSprites();
 
 			refresh();

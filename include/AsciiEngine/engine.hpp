@@ -172,6 +172,7 @@ namespace AsciiEngine
 		void sortObjectsByLayer();
 
 		void renderScene();
+		void renderHud();
 		void drawObjectSprites();
 		// display and update animations
 		void handleAnimations();

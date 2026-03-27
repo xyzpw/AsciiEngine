@@ -2,6 +2,7 @@
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/components/ascii_renderer.hpp"
 #include "AsciiEngine/components/ascii_animation.hpp"
+#include "AsciiEngine/components/hud.hpp"
 #include "AsciiEngine/scene.hpp"
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/utils/display.hpp"
@@ -27,6 +28,18 @@ namespace AsciiEngine
 			return;
 
 		activeScene->render();
+	}
+
+	void Engine::renderHud()
+	{
+		auto cond = [&](AsciiObject *a) {
+			return a->hasEnabledComponent<Hud>();
+		};
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto *hud = ao->getComponent<Hud>();
+			hud->render();
+		}, cond);
 	}
 
 	void Engine::drawObjectSprites()
