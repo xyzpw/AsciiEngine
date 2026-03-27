@@ -29,12 +29,32 @@ namespace AsciiEngine::Math
 			return Vector2(x + f, y + f);
 		}
 
+		void operator+=(const Vector2& other) {
+			x += other.x;
+			y += other.y;
+		}
+
+		void operator+=(const float& f) {
+			x += f;
+			y += f;
+		}
+
 		Vector2 operator-(const Vector2& other) const {
 			return Vector2(x - other.x, y - other.y);
 		}
 
 		Vector2 operator-(const float& f) const {
 			return Vector2(x - f, y - f);
+		}
+
+		void operator-=(const Vector2& other) {
+			x -= other.x;
+			y -= other.y;
+		}
+
+		void operator-=(const float& f) {
+			x -= f;
+			y -= f;
 		}
 
 		Vector2 operator*(const Vector2& other) const {
@@ -45,12 +65,32 @@ namespace AsciiEngine::Math
 			return Vector2(x * f, y * f);
 		}
 
+		void operator*=(const Vector2& other) {
+			x *= other.x;
+			y *= other.y;
+		}
+
+		void operator*=(const float& f) {
+			x *= f;
+			y *= f;
+		}
+
 		Vector2 operator/(const Vector2& other) const {
 			return Vector2(x / other.x, y / other.y);
 		}
 
 		Vector2 operator/(const float& f) const {
 			return Vector2(x / f, y / f);
+		}
+
+		void operator/=(const Vector2& other) {
+			x /= other.x;
+			y /= other.y;
+		}
+
+		void operator/=(const float& f) {
+			x /= f;
+			y /= f;
 		}
 
 		bool operator<(const Vector2 &other) const {
