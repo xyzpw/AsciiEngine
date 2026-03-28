@@ -29,7 +29,7 @@ namespace AsciiEngine
 		callOnAllActiveObjects([&](AsciiObject *ao) {
 			auto rend = ao->getComponent<AsciiRenderer>();
 
-			Vector2 p(rend->col, rend->row);
+			const Vector2 &p = rend->position;
 			float diffSqrMag = (p - origin).sqrMagnitude();
 
 			if (diffSqrMag > distSqr)
@@ -175,8 +175,8 @@ namespace AsciiEngine
 			if (rend == nullptr)
 				return;
 
-			rend->col = body->bounds.left();
-			rend->row = body->bounds.top();
+			rend->position.x = body->bounds.left();
+			rend->position.y = body->bounds.top();
 		};
 
 		callOnAllActiveObjects([&](AsciiObject *ao) {

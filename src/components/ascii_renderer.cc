@@ -14,7 +14,7 @@ namespace AsciiEngine
 			attron(COLOR_PAIR(colorPairId.value()));
 		}
 
-		Utils::mvprintwSprite(col, row, *getSprite());
+		Utils::mvprintwSprite(position.x, position.y, *getSprite());
 
 		if (hasCol) {
 			attroff(COLOR_PAIR(colorPairId.value()));

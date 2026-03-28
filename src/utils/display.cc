@@ -15,19 +15,21 @@ namespace AsciiEngine::Utils
 	bool isPointInSprite(const AsciiRenderer *rend, int col, int row)
 	{
 		const Sprite &spr = rend->sprite;
+		const int &rendCol = rend->position.x;
+		const int &rendRow = rend->position.y;
 
-		if (row < rend->row || row - rend->row >= spr.height())
+		if (row < rendRow || row - rendRow >= spr.height())
 			return false;
-		else if (col < rend->col || col >= rend->col + spr.width())
+		else if (col < rendCol || col >= rendCol + spr.width())
 			return false;
 
-		const std::string &pixels = spr.pixels[row - rend->row];
+		const std::string &pixels = spr.pixels[row - rendRow];
 
 		int pxSize = pixels.size();
 		for (int i = 0; i < pxSize; ++i) {
 			const char &c = pixels[i];
 
-			if (col == rend->col + i && c != ' ')
+			if (col == rendCol + i && c != ' ')
 				return true;
 		}
 
@@ -45,21 +47,26 @@ namespace AsciiEngine::Utils
 		const Sprite &sprA = *a->getSprite();
 		const Sprite &sprB = *b->getSprite();
 
-		int left = std::max(a->col, b->col);
-		int right = std::min(a->col + sprA.width(),  b->col + sprB.width());
-		int top = std::max(a->row, b->row);
-		int bottom = std::min(a->row + sprA.height(), b->row + sprB.height());
+		const int &aCol = a->position.x;
+		const int &aRow = a->position.y;
+		const int &bCol = b->position.x;
+		const int &bRow = b->position.y;
+
+		int left = std::max(aCol, bCol);
+		int right = std::min(aCol + sprA.width(),  bCol + sprB.width());
+		int top = std::max(aRow, bRow);
+		int bottom = std::min(aRow + sprA.height(), bRow + sprB.height());
 
 		if (left >= right || top >= bottom)
 			return false;
 
 		for (int y = top; y < bottom; ++y) {
-			const std::string &rowA = sprA.pixels[y - a->row];
-			const std::string &rowB = sprB.pixels[y - b->row];
+			const std::string &rowA = sprA.pixels[y - aRow];
+			const std::string &rowB = sprB.pixels[y - bRow];
 
 			for (int x = left; x < right; ++x) {
-				unsigned int ax = x - a->col;
-				unsigned int bx = x - b->col;
+				unsigned int ax = x - aCol;
+				unsigned int bx = x - bCol;
 
 				char ca = (ax < rowA.size()) ? rowA[ax] : ' ';
 				char cb = (bx < rowB.size()) ? rowB[bx] : ' ';

@@ -34,5 +34,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	const std::string version = "0.3.0";
+	const std::string version = "0.4.0";
 }

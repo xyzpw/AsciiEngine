@@ -7,24 +7,27 @@
 #include "AsciiEngine/core/component.hpp"
 #include "AsciiEngine/common/color.hpp"
 #include "AsciiEngine/common/sprite.hpp"
+#include "AsciiEngine/math/vector2.hpp"
 
 namespace AsciiEngine
 {
 	struct AsciiRenderer : Component {
-		int col;
-		int row;
+		Math::Vector2 position;
 
 		Sprite sprite;
 		Sprite *animationSprite = nullptr;
 		std::optional<int> colorPairId;
 
 		AsciiRenderer(int x, int y, std::vector<std::string> rows)
-			: col(x), row(y), sprite(rows) {}
+			: position(x, y), sprite(rows) {}
+
 		AsciiRenderer(int x, int y, Sprite spr)
-			: col(x), row(y), sprite(spr) {}
+			: position(x, y), sprite(spr) {}
+
 		AsciiRenderer(int x, int y, std::string spr)
-			: col(x), row(y), sprite(Sprite({ spr })) {}
-		AsciiRenderer(int x, int y) : col(x), row(y) {}
+			: position(x, y), sprite(Sprite({ spr })) {}
+
+		AsciiRenderer(int x, int y) : position(x, y) {}
 
 		void render();
 
@@ -36,10 +39,11 @@ namespace AsciiEngine
 		Color getFgColor();
 		Color getBgColor();
 
-		void move(int dx, int dy) { col += dx; row += dy; }
+		void move(int dx, int dy) { position.x += dx; position.y += dy; }
 		void moveX(int dx) { move(dx, 0); }
 		void moveY(int dy) { move(0, dy); }
-		void moveTo(int newCol, int newRow) { col = newCol; row = newRow; }
+		void moveTo(int newCol, int newRow)
+			{ position.x = newCol; position.y = newRow; }
 
 		bool isVisible() { return visible; }
 		void setVisible(bool value) { visible = value; }
