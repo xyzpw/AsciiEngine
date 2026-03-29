@@ -72,6 +72,7 @@ namespace AsciiEngine
 		 * @action: function to run on key input
 		 */
 		void registerKeyAction(int key, std::function<void()> action);
+
 		// register key to quit engine
 		void registerQuitKey(int key)
 		{
