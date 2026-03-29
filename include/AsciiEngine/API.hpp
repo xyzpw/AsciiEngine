@@ -30,10 +30,10 @@
 #include "physics/raycast_hit.hpp"
 // IWYU pragma: end_keep
 
-#include <string>
+#include <string_view>
 
 namespace AsciiEngine
 {
 	// version of API
-	const std::string version = "0.5.0-alpha1";
+	inline constexpr std::string_view version = "0.5.0-alpha1";
 }
