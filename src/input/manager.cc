@@ -1,9 +1,19 @@
 #include "AsciiEngine/engine.hpp"
 #include "AsciiEngine/components/controller.hpp"
 #include "AsciiEngine/ascii_object.hpp"
+#include "AsciiEngine/core/mouse_state.hpp"
+#include <ncurses.h>
 
 namespace AsciiEngine
 {
+	constexpr mmask_t LEFT_MOUSE_MASK = BUTTON1_PRESSED | BUTTON1_RELEASED;
+	constexpr mmask_t MIDDLE_MOUSE_MASK = BUTTON2_PRESSED | BUTTON2_RELEASED;
+	constexpr mmask_t RIGHT_MOUSE_MASK = BUTTON3_PRESSED | BUTTON3_RELEASED;
+	constexpr mmask_t BUTTON_PRESSED_MASK =
+		BUTTON1_PRESSED | BUTTON2_PRESSED | BUTTON3_PRESSED;
+	constexpr mmask_t BUTTON_RELEASED_MASK =
+		BUTTON1_RELEASED | BUTTON2_RELEASED | BUTTON3_RELEASED;
+
 	void Engine::processController(Controller* ctrl)
 	{
 		for (auto &it : ctrl->keyFunctionMap) {
@@ -22,6 +32,54 @@ namespace AsciiEngine
 			for (auto *ctrl : controllers) {
 				processController(ctrl);
 			}
+		}
+	}
+
+	void Engine::updateMouseState()
+	{
+		MouseEvent e;
+		if (tryGetMouseEvent(e))
+			applyMouseEventToState(e);
+
+		if (mouseState.isDown())
+			mouseState.holdTime += deltaTime;
+	}
+
+	bool Engine::tryGetMouseEvent(MouseEvent &out)
+	{
+		MEVENT e;
+		if (getmouse(&e) != OK) {
+			out.reset();
+			return false;
+		}
+
+		out.position.x = e.x;
+		out.position.y = e.y;
+
+		if (e.bstate & LEFT_MOUSE_MASK)
+			out.button = MouseButton::LEFT;
+		else if (e.bstate & MIDDLE_MOUSE_MASK)
+			out.button = MouseButton::MIDDLE;
+		else if (e.bstate & RIGHT_MOUSE_MASK)
+			out.button = MouseButton::RIGHT;
+
+		if (e.bstate & BUTTON_PRESSED_MASK)
+			out.action = MouseAction::PRESS;
+		else if (e.bstate & BUTTON_RELEASED_MASK)
+			out.action = MouseAction::RELEASE;
+
+		return true;
+	}
+
+	void Engine::applyMouseEventToState(const MouseEvent &e)
+	{
+		if (e.action == MouseAction::PRESS) {
+			mouseState.button = e.button;
+			mouseState.holdTime = 0;
+			mouseState.position = e.position;
+		} else if (e.action == MouseAction::RELEASE) {
+			mouseState.reset();
+			mouseState.position = e.position;
 		}
 	}
 }

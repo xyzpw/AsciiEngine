@@ -15,6 +15,7 @@
 #include "AsciiEngine/math/ray.hpp"
 #include "AsciiEngine/physics/raycast_hit.hpp"
 #include "AsciiEngine/core/debug.hpp"
+#include "AsciiEngine/core/mouse_state.hpp"
 
 namespace AsciiEngine
 {
@@ -42,6 +43,8 @@ namespace AsciiEngine
 		bool isInDisplay(const Math::Vector2 &v);
 
 		bool isRunning() { return running; }
+
+		const MouseState &getMouseState() const { return mouseState; }
 
 		int currentFrame = 0;
 		float deltaTime;
@@ -163,6 +166,11 @@ namespace AsciiEngine
 
 		bool running = false;
 		int TICK_INTERVAL_MS = 16;
+
+		MouseState mouseState;
+		void updateMouseState();
+		bool tryGetMouseEvent(MouseEvent&);
+		void applyMouseEventToState(const MouseEvent&);
 
 		std::vector<std::unique_ptr<AsciiObject>> asciiObjects;
 		std::vector<std::unique_ptr<Scene>> scenes;

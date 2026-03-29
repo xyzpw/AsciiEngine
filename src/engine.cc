@@ -49,6 +49,8 @@ namespace AsciiEngine
 		noecho();
 		nodelay(stdscr, TRUE);
 		curs_set(0);
+		mouseinterval(0);
+		mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 		use_default_colors();
 		start_color();
 
@@ -75,6 +77,8 @@ namespace AsciiEngine
 
 			/* get current key pressed */
 			keyDown = getch();
+
+			updateMouseState();
 
 			/* update current used key status */
 			if (keyDown != -1) {
