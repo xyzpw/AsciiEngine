@@ -75,10 +75,14 @@ namespace AsciiEngine
 
 			clear();
 
-			/* get current key pressed */
+			/* get input */
 			keyDown = getch();
+			MouseEvent mouseEvent = getMouseEvent();
 
-			updateMouseState();
+			/* update mouse state */
+			if (mouseState.isDown())
+				mouseState.holdTime += deltaTime;
+			updateMouseState(mouseEvent);
 
 			/* update current used key status */
 			if (keyDown != -1) {

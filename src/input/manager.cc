@@ -35,40 +35,36 @@ namespace AsciiEngine
 		}
 	}
 
-	void Engine::updateMouseState()
+	void Engine::updateMouseState(const MouseEvent& e)
 	{
-		MouseEvent e;
-		if (tryGetMouseEvent(e))
+		if (e)
 			applyMouseEventToState(e);
-
-		if (mouseState.isDown())
-			mouseState.holdTime += deltaTime;
 	}
 
-	bool Engine::tryGetMouseEvent(MouseEvent &out)
+	MouseEvent Engine::getMouseEvent()
 	{
-		MEVENT e;
-		if (getmouse(&e) != OK) {
-			out.reset();
-			return false;
-		}
+		MouseEvent event;
 
-		out.position.x = e.x;
-		out.position.y = e.y;
+		MEVENT e;
+		if (getmouse(&e) != OK)
+			return event;
+
+		event.position.x = e.x;
+		event.position.y = e.y;
 
 		if (e.bstate & LEFT_MOUSE_MASK)
-			out.button = MouseButton::LEFT;
+			event.button = MouseButton::LEFT;
 		else if (e.bstate & MIDDLE_MOUSE_MASK)
-			out.button = MouseButton::MIDDLE;
+			event.button = MouseButton::MIDDLE;
 		else if (e.bstate & RIGHT_MOUSE_MASK)
-			out.button = MouseButton::RIGHT;
+			event.button = MouseButton::RIGHT;
 
 		if (e.bstate & BUTTON_PRESSED_MASK)
-			out.action = MouseAction::PRESS;
+			event.action = MouseAction::PRESS;
 		else if (e.bstate & BUTTON_RELEASED_MASK)
-			out.action = MouseAction::RELEASE;
+			event.action = MouseAction::RELEASE;
 
-		return true;
+		return event;
 	}
 
 	void Engine::applyMouseEventToState(const MouseEvent &e)

@@ -169,8 +169,8 @@ namespace AsciiEngine
 		int TICK_INTERVAL_MS = 16;
 
 		MouseState mouseState;
-		void updateMouseState();
-		bool tryGetMouseEvent(MouseEvent&);
+		void updateMouseState(const MouseEvent&);
+		MouseEvent getMouseEvent();
 		void applyMouseEventToState(const MouseEvent&);
 
 		std::vector<std::unique_ptr<AsciiObject>> asciiObjects;
