@@ -1,6 +1,8 @@
 #pragma once
 
 #include <ostream>
+#include <string>
+#include <format>
 
 namespace AsciiEngine::Math
 {
@@ -115,6 +117,11 @@ namespace AsciiEngine::Math
 
 		bool operator!=(const Vector2 &other) const {
 			return x != other.x || y != other.y;
+		}
+
+		operator std::string() const
+		{
+			return std::format("({}, {})", x, y);
 		}
 	};
 
