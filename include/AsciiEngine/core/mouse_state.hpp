@@ -29,6 +29,11 @@ namespace AsciiEngine
 			position.x = 0;
 			position.y = 0;
 		}
+
+		operator bool() const
+		{
+			return action != MouseAction::NONE;
+		}
 	};
 
 	struct MouseState {
