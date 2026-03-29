@@ -141,6 +141,7 @@ namespace AsciiEngine
 
 			frameTimer.stop();
 			deltaTime = frameTimer.elapsed().count();
+
 			currentlyInFrame = false;
 		}
 
