@@ -18,9 +18,9 @@ namespace AsciiEngine
 	};
 
 	struct MouseEvent {
-		MouseButton button;
-		MouseAction action;
-		Math::Vector2 position;
+		MouseButton button = MouseButton::NONE;
+		MouseAction action = MouseAction::NONE;
+		Math::Vector2 position{0, 0};
 
 		void reset()
 		{
