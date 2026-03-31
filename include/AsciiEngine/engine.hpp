@@ -16,6 +16,7 @@
 #include "AsciiEngine/physics/raycast_hit.hpp"
 #include "AsciiEngine/core/debug.hpp"
 #include "AsciiEngine/core/mouse_state.hpp"
+#include "AsciiEngine/core/draw_renderer.hpp"
 
 namespace AsciiEngine
 {
@@ -159,6 +160,8 @@ namespace AsciiEngine
 		std::vector<AsciiObject*> getAllAsciiObjectsByName(const std::string &name);
 		AsciiObject* getAsciiObjectByName(const std::string &name);
 		AsciiObject* getAsciiObjectById(int id);
+
+		DrawRenderer draw;
 
 	private:
 		Engine() = default;

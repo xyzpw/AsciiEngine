@@ -23,6 +23,7 @@
 #include "core/timer.hpp"
 #include "core/signal.hpp"
 #include "core/mouse_state.hpp"
+#include "core/draw_renderer.hpp"
 #include "utils/colors.hpp"
 #include "utils/display.hpp"
 #include "math/vector2.hpp"
@@ -36,5 +37,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	inline constexpr std::string_view version = "0.5.0";
+	inline constexpr std::string_view version = "0.6.0";
 }
