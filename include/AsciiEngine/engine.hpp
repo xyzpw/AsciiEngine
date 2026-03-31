@@ -195,6 +195,8 @@ namespace AsciiEngine
 		void processAllConditionalActions();
 		void processController(Controller *ctrl);
 
+		void handleMouseInputComponents(const MouseEvent&);
+
 		void updateAllBehaviours();
 		void lateUpdateAllBehaviours();
 

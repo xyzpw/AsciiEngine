@@ -120,6 +120,7 @@ namespace AsciiEngine
 			}
 
 			processAllControllers();
+			handleMouseInputComponents(mouseEvent);
 			handleAnimations();
 			checkPhysicsBodies();
 			checkSpriteColliders();

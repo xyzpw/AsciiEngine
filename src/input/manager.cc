@@ -1,7 +1,10 @@
 #include "AsciiEngine/engine.hpp"
 #include "AsciiEngine/components/controller.hpp"
+#include "AsciiEngine/components/clickable.hpp"
+#include "AsciiEngine/components/ascii_renderer.hpp"
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/core/mouse_state.hpp"
+#include "AsciiEngine/utils/display.hpp"
 #include <ncurses.h>
 
 namespace AsciiEngine
@@ -77,5 +80,28 @@ namespace AsciiEngine
 			mouseState.reset();
 			mouseState.position = e.position;
 		}
+	}
+
+	void Engine::handleMouseInputComponents(const MouseEvent &e)
+	{
+		auto isValid = [&](AsciiObject *a) {
+			return a->hasEnabledComponent<Clickable>() &&
+				a->hasEnabledComponent<AsciiRenderer>();
+		};
+
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto click = ao->getComponent<Clickable>();
+			auto rend = ao->getComponent<AsciiRenderer>();
+
+			if (!Utils::isPointInSprite(rend, e.position))
+				return;
+
+			if (e.action == MouseAction::PRESS)
+				click->onMouseDown(mouseState);
+			else if (e.action == MouseAction::RELEASE)
+				click->onMouseUp(mouseState);
+			else if (mouseState.isDown())
+				click->onHold(mouseState);
+		}, isValid);
 	}
 }
