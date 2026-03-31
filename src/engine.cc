@@ -17,6 +17,8 @@
 #include <vector>
 #include <string>
 
+using namespace AsciiEngine::Math;
+
 namespace AsciiEngine
 {
 	std::vector<KeyAction> registeredKeys;
@@ -56,6 +58,7 @@ namespace AsciiEngine
 
 		// update current terminal size variables
 		getmaxyx(stdscr, maxRows, maxColumns);
+		midpoint = Vector2(getMidpointCol(), getMidpointRow());
 
 		/* run user-created startup calls */
 		for (auto &fn : onStartFns) {

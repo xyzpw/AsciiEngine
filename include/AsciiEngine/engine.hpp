@@ -38,6 +38,8 @@ namespace AsciiEngine
 		int getMidpointCol() { return (maxColumns - 1) / 2; }
 		// row at display midpoint
 		int getMidpointRow() { return (maxRows - 1) / 2; }
+		// center of screen
+		Math::Vector2 getMidpoint() { return midpoint; }
 		/* is the specified point within terminal */
 		bool isInDisplay(int col, int row);
 		bool isInDisplay(const Math::Vector2 &v);
@@ -167,6 +169,8 @@ namespace AsciiEngine
 
 		bool running = false;
 		int TICK_INTERVAL_MS = 16;
+
+		Math::Vector2 midpoint;
 
 		MouseState mouseState;
 		void updateMouseState(const MouseEvent&);
