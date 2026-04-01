@@ -1,7 +1,7 @@
 # AsciiEngine
 An open source game engine for building terminal-based games on Linux using ncurses.
 
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/xyzpw/AsciiEngine/total?style=for-the-badge)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/xyzpw/AsciiEngine/total)
 
 ## Prerequisites
 - c++20
