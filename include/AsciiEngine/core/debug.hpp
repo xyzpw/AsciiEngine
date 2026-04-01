@@ -34,12 +34,6 @@ namespace AsciiEngine
 		void error(const char *fmt, ...);
 		void print(const char *fmt, ...);
 
-		/*
-		 * draw a line on the screen this frame
-		 * @distance: length of line
-		 */
-		void drawLine(const Math::Ray &ray, float distance);
-
 		void printLogs();
 
 		int errors = 0;

@@ -76,16 +76,6 @@ namespace AsciiEngine
 		va_end(args);
 	}
 
-	void Debug::drawLine(const Ray &ray, float distance)
-	{
-		const auto &[point, direction] = ray;
-
-		for (int i = 0; i < distance; ++i) {
-			Vector2 p = point + direction * i;
-			mvprintw(p.y, p.x, ".");
-		}
-	}
-
 	void Debug::printLogs()
 	{
 		for (const auto &ent : logEntries) {
