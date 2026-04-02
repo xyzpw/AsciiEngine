@@ -81,7 +81,7 @@ namespace AsciiEngine::Utils
 	bool hasVisibleRenderer(AsciiObject *a)
 	{
 		auto rend = a->getComponent<AsciiRenderer>();
-		return rend != nullptr && rend->isVisible();
+		return rend != nullptr && rend->isEnabled() && rend->isVisible();
 	}
 
 	void mvprintwEachChar(int col, int row, const std::string &str)
