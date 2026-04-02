@@ -7,6 +7,8 @@
 #include "AsciiEngine/utils/display.hpp"
 #include <ncurses.h>
 
+using namespace AsciiEngine::Math;
+
 namespace AsciiEngine
 {
 	constexpr mmask_t LEFT_MOUSE_MASK = BUTTON1_PRESSED | BUTTON1_RELEASED;
@@ -89,11 +91,16 @@ namespace AsciiEngine
 				Utils::hasVisibleRenderer(a);
 		};
 
+		bool hasAction = e.action != MouseAction::NONE;
+
 		callOnAllActiveObjects([&](AsciiObject *ao) {
 			auto click = ao->getComponent<Clickable>();
 			auto rend = ao->getComponent<AsciiRenderer>();
 
-			if (!Utils::isPointInSprite(rend, e.position))
+			const Vector2 &pos = hasAction ? e.position :
+							 mouseState.position;
+
+			if (!Utils::isPointInSprite(rend, pos))
 				return;
 
 			if (e.action == MouseAction::PRESS)
