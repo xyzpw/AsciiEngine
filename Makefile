@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -fPIC -Iinclude -std=c++20 -Wall -Wextra
-LDFFLAGS = -lncurses
+LDFFLAGS = -lncurses -lSDL2 -lSDL2_mixer
 
 BUILD_DIR = build
 

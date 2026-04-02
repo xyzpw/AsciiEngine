@@ -18,6 +18,7 @@
 #include "components/ascii_body.hpp"
 #include "components/hud.hpp"
 #include "components/clickable.hpp"
+#include "components/audio_source.hpp"
 #include "core/component.hpp"
 #include "core/key_action.hpp"
 #include "core/timer.hpp"
@@ -37,5 +38,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	inline constexpr std::string_view version = "0.6.0";
+	inline constexpr std::string_view version = "0.7.0";
 }

@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include "AsciiEngine/components/controller.hpp"
 #include "AsciiEngine/components/behaviour.hpp"
+#include "AsciiEngine/components/audio_source.hpp"
 #include "AsciiEngine/common/color.hpp"
 #include "AsciiEngine/common/sprite.hpp"
 #include "AsciiEngine/math/vector2.hpp"
@@ -163,6 +164,11 @@ namespace AsciiEngine
 
 		DrawRenderer draw;
 
+		/*
+		 * play audio of source
+		 */
+		void playAudioSource(AudioSource *source);
+
 	private:
 		Engine() = default;
 		~Engine() = default;
@@ -206,6 +212,11 @@ namespace AsciiEngine
 
 		void updateAllBehaviours();
 		void lateUpdateAllBehaviours();
+
+		bool audioInitialized = false;
+		void initAudio();
+		// Free all audio, must be called to prevent memory leaks!
+		void cleanAudio();
 
 		void callOnBehaviours(void (Behaviour::*method)());
 		/* Call a function on an object if it is active and enabled. */

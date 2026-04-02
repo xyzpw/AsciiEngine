@@ -43,6 +43,8 @@ namespace AsciiEngine
 
 		running = true;
 
+		initAudio();
+
 		setlocale(LC_ALL, "");
 
 		/* initialize ncurses */
@@ -153,6 +155,7 @@ namespace AsciiEngine
 			currentlyInFrame = false;
 		}
 
+		cleanAudio();
 		endwin();
 
 		/* run user-created quit calls */
