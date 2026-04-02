@@ -6,6 +6,7 @@ An open source game engine for building terminal-based games on Linux using ncur
 ## Prerequisites
 - c++20
 - ncurses
+- sdl2_mixer
 
 ## API
 Including `API.hpp` is all you need for usage, e.g.:
