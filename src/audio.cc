@@ -11,6 +11,9 @@ namespace AsciiEngine
 		if (!audioInitialized)
 			return;
 
+		if (!source->isAudioLoaded())
+			source->loadAudioFile();
+
 		auto sound = source->getAudioChunk();
 		if (sound != nullptr)
 			Mix_PlayChannel(-1, sound, 0);

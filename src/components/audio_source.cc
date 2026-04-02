@@ -12,8 +12,7 @@ namespace AsciiEngine
 
 		filename = file;
 
-		audioChunk = Mix_LoadWAV(file.c_str());
-		hasSound = true;
+		loadAudioFile();
 	}
 
 	AudioSource::AudioSource(const std::string &name,
@@ -25,8 +24,7 @@ namespace AsciiEngine
 		this->name = name;
 		filename = file;
 
-		audioChunk = Mix_LoadWAV(filename.c_str());
-		hasSound = true;
+		loadAudioFile();
 	}
 
 	Mix_Chunk *AudioSource::getAudioChunk()
@@ -41,5 +39,15 @@ namespace AsciiEngine
 	{
 		Mix_FreeChunk(audioChunk);
 		hasSound = false;
+	}
+
+	void AudioSource::loadAudioFile()
+	{
+		if (filename.empty() || hasSound)
+			return;
+
+		audioChunk = Mix_LoadWAV(filename.c_str());
+		if (audioChunk)
+			hasSound = true;
 	}
 }

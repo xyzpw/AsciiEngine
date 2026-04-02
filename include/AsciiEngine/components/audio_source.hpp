@@ -21,6 +21,13 @@ namespace AsciiEngine
 		AudioSource(const std::string &file);
 		AudioSource(const std::string &name, const std::string &file);
 
+		void loadAudioFile();
+
+		/*
+		 * return: true if audio file loaded and playable
+		 */
+		bool isAudioLoaded() { return hasSound; }
+
 	private:
 		std::string filename;
 		Mix_Chunk *audioChunk;
