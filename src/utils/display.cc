@@ -1,6 +1,5 @@
 #include "AsciiEngine/utils/display.hpp"
 #include "AsciiEngine/components/ascii_renderer.hpp"
-#include "AsciiEngine/components/ascii_animation.hpp"
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/utils/text.hpp"
