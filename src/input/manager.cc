@@ -86,7 +86,7 @@ namespace AsciiEngine
 	{
 		auto isValid = [&](AsciiObject *a) {
 			return a->hasEnabledComponent<Clickable>() &&
-				a->hasEnabledComponent<AsciiRenderer>();
+				Utils::hasVisibleRenderer(a);
 		};
 
 		callOnAllActiveObjects([&](AsciiObject *ao) {
