@@ -62,7 +62,10 @@ namespace AsciiEngine
 		// create ascii object with a name
 		AsciiObject* createAsciiObject(const std::string &name);
 		/* create ascii object with a sprite renderer component */
-		AsciiObject* createAsciiObject(int col, int row, const Sprite &sprite);
+		AsciiObject* createAsciiObject(
+				const Math::Vector2 &point,
+				const Sprite &sprite);
+
 		/*
 		 * @name: scene name
 		 * @load: load the scene upon creation?

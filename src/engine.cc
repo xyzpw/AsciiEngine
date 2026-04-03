@@ -214,16 +214,16 @@ namespace AsciiEngine
 		return asciiObjects.back().get();
 	}
 
-	AsciiObject* Engine::createAsciiObject(int col, int row,
-			const Sprite &sprite)
+	AsciiObject *Engine::createAsciiObject(const Vector2 &point,
+					       const Sprite &sprite)
 	{
-		auto obj = std::make_unique<AsciiObject>();
+		auto ao = std::make_unique<AsciiObject>();
 
-		obj->id = objectCounter++;
-		obj->name = "";
-		obj->addComponent<AsciiRenderer>(col, row, sprite);
+		ao->id = objectCounter++;
+		ao->name = "";
+		ao->addComponent<AsciiRenderer>(point, sprite);
 
-		asciiObjects.push_back(std::move(obj));
+		asciiObjects.push_back(std::move(ao));
 		return asciiObjects.back().get();
 	}
 
