@@ -45,11 +45,13 @@ namespace AsciiEngine
 		Color getFgColor();
 		Color getBgColor();
 
+		void move(const Math::Vector2 &delta) { position += delta; }
 		void move(int dx, int dy) { position.x += dx; position.y += dy; }
 
 		void moveX(int dx) { move(dx, 0); }
 		void moveY(int dy) { move(0, dy); }
 
+		void moveTo(const Math::Vector2 &point) { position = point; }
 		void moveTo(int newCol, int newRow)
 		{
 			position.x = newCol;
