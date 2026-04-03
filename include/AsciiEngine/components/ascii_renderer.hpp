@@ -46,8 +46,10 @@ namespace AsciiEngine
 		Color getBgColor();
 
 		void move(int dx, int dy) { position.x += dx; position.y += dy; }
+
 		void moveX(int dx) { move(dx, 0); }
 		void moveY(int dy) { move(0, dy); }
+
 		void moveTo(int newCol, int newRow)
 			{ position.x = newCol; position.y = newRow; }
 
