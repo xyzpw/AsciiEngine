@@ -93,6 +93,8 @@ namespace AsciiEngine
 			if (keyDown != -1) {
 				keyTimer.stop();
 
+				notifyBehavioursInput(keyDown);
+
 				delayedKeyDown = keyDown;
 				bool prevKeyIsCurrent = previousKeyDown == keyDown;
 				float dt = 0.001f * keyTimer.completionTimeMs;
@@ -379,6 +381,17 @@ namespace AsciiEngine
 	void Engine::lateUpdateAllBehaviours()
 	{
 		callOnBehaviours(&Behaviour::lateUpdate);
+	}
+
+	void Engine::notifyBehavioursInput(int key)
+	{
+		callOnAllActiveObjects([&](AsciiObject *ao) {
+			auto all = ao->getAllComponentsOfType<Behaviour>();
+			for (auto &cmp : all) {
+				if (cmp->isEnabled())
+					cmp->onInput(key);
+			}
+		});
 	}
 
 	void Engine::callOnBehaviours(void (Behaviour::*method)())

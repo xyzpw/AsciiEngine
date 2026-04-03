@@ -8,6 +8,7 @@ namespace AsciiEngine
 		virtual void start() {};
 		virtual void update() {};
 		virtual void lateUpdate() {};
+		virtual void onInput(int k) {};
 		virtual void onDestroy() {};
 
 		Behaviour() {}

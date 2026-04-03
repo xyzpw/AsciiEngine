@@ -212,6 +212,7 @@ namespace AsciiEngine
 
 		void updateAllBehaviours();
 		void lateUpdateAllBehaviours();
+		void notifyBehavioursInput(int key);
 
 		bool audioInitialized = false;
 		void initAudio();
