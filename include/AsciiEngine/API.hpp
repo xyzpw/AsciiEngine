@@ -27,6 +27,8 @@
 #include "core/draw_renderer.hpp"
 #include "utils/colors.hpp"
 #include "utils/display.hpp"
+#include "utils/math.hpp"
+#include "utils/text.hpp"
 #include "math/vector2.hpp"
 #include "math/ray.hpp"
 #include "math/bounds.hpp"
