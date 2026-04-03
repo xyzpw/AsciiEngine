@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <cctype>
+#include <cstdarg>
+#include <cstdio>
 
 namespace AsciiEngine::Utils
 {
@@ -27,5 +29,18 @@ namespace AsciiEngine::Utils
 		}
 
 		return true;
+	}
+
+	std::string formatText(const char *fmt, ...)
+	{
+		va_list args;
+		va_start(args, fmt);
+
+		char buf[1024];
+		vsnprintf(buf, sizeof(buf), fmt, args);
+
+		va_end(args);
+
+		return buf;
 	}
 }

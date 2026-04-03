@@ -7,4 +7,10 @@ namespace AsciiEngine::Utils
 {
 	std::vector<int> getSpacePositions(const std::string &str);
 	bool isPrintable(const std::string &str);
+
+	/*
+	 * format string with args
+	 * @fmt: format
+	 */
+	std::string formatText(const char *fmt, ...);
 }
