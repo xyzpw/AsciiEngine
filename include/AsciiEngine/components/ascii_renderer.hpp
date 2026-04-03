@@ -51,7 +51,10 @@ namespace AsciiEngine
 		void moveY(int dy) { move(0, dy); }
 
 		void moveTo(int newCol, int newRow)
-			{ position.x = newCol; position.y = newRow; }
+		{
+			position.x = newCol;
+			position.y = newRow;
+		}
 
 		bool isVisible() { return visible; }
 		void setVisible(bool value) { visible = value; }
