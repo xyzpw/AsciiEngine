@@ -21,10 +21,10 @@ namespace AsciiEngine
 		AsciiRenderer(int x, int y, std::vector<std::string> rows)
 			: position(x, y), sprite(rows) {}
 
-		AsciiRenderer(int x, int y, Sprite spr)
+		AsciiRenderer(int x, int y, const Sprite &spr)
 			: position(x, y), sprite(spr) {}
 
-		AsciiRenderer(int x, int y, std::string spr)
+		AsciiRenderer(int x, int y, const std::string &spr)
 			: position(x, y), sprite(Sprite({ spr })) {}
 
 		AsciiRenderer(int x, int y) : position(x, y) {}
