@@ -19,6 +19,7 @@
 #include "AsciiEngine/core/mouse_state.hpp"
 #include "AsciiEngine/core/draw_renderer.hpp"
 #include "AsciiEngine/core/notification.hpp"
+#include "AsciiEngine/core/timer.hpp"
 
 namespace AsciiEngine
 {
@@ -55,6 +56,11 @@ namespace AsciiEngine
 		float deltaTime;
 		bool currentlyInFrame = false;
 		Scene* activeScene;
+
+		/*
+		 * seconds since engine started
+		 */
+		float getUptime() { return uptimeTimer.elapsed().count(); }
 
 		Math::Vector2 gravity = Math::Vector2(0, 9.80665f);
 
@@ -192,6 +198,7 @@ namespace AsciiEngine
 
 		bool running = false;
 		int TICK_INTERVAL_MS = 16;
+		Timer uptimeTimer;
 
 		Math::Vector2 midpoint;
 

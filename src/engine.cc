@@ -72,6 +72,8 @@ namespace AsciiEngine
 		Timer frameTimer(true);
 		int keyRepeatRateMs = (KEYBOARD_REPEAT_RATE_MS * 2 + TICK_INTERVAL_MS);
 
+		uptimeTimer.start();
+
 		while (running) {
 			++currentFrame;
 			currentlyInFrame = true;
