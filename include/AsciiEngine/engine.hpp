@@ -55,12 +55,16 @@ namespace AsciiEngine
 		int currentFrame = 0;
 		float deltaTime;
 		bool currentlyInFrame = false;
+		bool fpsVisible = false;
 		Scene* activeScene;
 
 		/*
 		 * seconds since engine started
 		 */
 		float getUptime() { return uptimeTimer.elapsed().count(); }
+
+		float getFps() { return fps; }
+		void setFpsVisible(bool value) { fpsVisible = value; }
 
 		Math::Vector2 gravity = Math::Vector2(0, 9.80665f);
 
@@ -200,6 +204,8 @@ namespace AsciiEngine
 		int TICK_INTERVAL_MS = 16;
 		Timer uptimeTimer;
 
+		float fps = 0;
+
 		Math::Vector2 midpoint;
 
 		MouseState mouseState;
@@ -222,6 +228,7 @@ namespace AsciiEngine
 		void renderScene();
 		void renderHud();
 		void drawObjectSprites();
+		void renderFps();
 		// display and update animations
 		void handleAnimations();
 

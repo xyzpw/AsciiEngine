@@ -90,6 +90,11 @@ namespace AsciiEngine
 		}, Utils::hasVisibleRenderer);
 	}
 
+	void Engine::renderFps()
+	{
+		mvprintw(0, maxColumns - 8, "fps: %.0f", getFps());
+	}
+
 	void Engine::handleAnimations()
 	{
 		auto isValid = [&](AsciiObject *a) {

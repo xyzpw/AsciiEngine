@@ -143,6 +143,8 @@ namespace AsciiEngine
 			drawObjectSprites();
 
 			handleNotifications();
+			if (fpsVisible)
+				renderFps();
 
 			refresh();
 
@@ -157,6 +159,10 @@ namespace AsciiEngine
 
 			frameTimer.stop();
 			deltaTime = frameTimer.elapsed().count();
+
+			/* compute moving average fps */
+			if (deltaTime > 0)
+				fps += 0.05f * (1.0f / deltaTime - fps);
 
 			currentlyInFrame = false;
 		}
