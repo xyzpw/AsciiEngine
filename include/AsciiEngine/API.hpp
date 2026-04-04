@@ -25,6 +25,7 @@
 #include "core/signal.hpp"
 #include "core/mouse_state.hpp"
 #include "core/draw_renderer.hpp"
+#include "core/notification.hpp"
 #include "utils/colors.hpp"
 #include "utils/display.hpp"
 #include "utils/math.hpp"

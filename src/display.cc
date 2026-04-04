@@ -6,6 +6,9 @@
 #include "AsciiEngine/scene.hpp"
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/utils/display.hpp"
+#include "AsciiEngine/core/notification.hpp"
+#include <algorithm>
+#include <ncurses.h>
 
 namespace AsciiEngine
 {
@@ -20,6 +23,40 @@ namespace AsciiEngine
 	{
 		auto floor = v.floored();
 		return isInDisplay(floor.x, floor.y);
+	}
+
+	void Engine::showToast(const std::string &text, float ttl)
+	{
+		notifications.emplace_back(text, ttl);
+	}
+
+	void Engine::clearToast()
+	{
+		notifications.clear();
+	}
+
+	void Engine::handleNotifications()
+	{
+		if (notifications.empty())
+			return;
+
+		/* remove expired*/
+		auto tmp = std::remove_if(
+				notifications.begin(),
+				notifications.end(),
+				[](Notification &no) {
+					return no.isExpired();
+				});
+		notifications.erase(tmp, notifications.end());
+
+		int r = maxRows - notifications.size();
+		for (auto &no : notifications) {
+			int c = maxColumns - no.text.size() - 1;
+			mvprintw(r, c, "%s", no.text.c_str());
+
+			++r;
+			no.ttl -= deltaTime;
+		}
 	}
 
 	void Engine::renderScene()

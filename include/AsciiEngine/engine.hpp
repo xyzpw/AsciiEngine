@@ -18,6 +18,7 @@
 #include "AsciiEngine/core/debug.hpp"
 #include "AsciiEngine/core/mouse_state.hpp"
 #include "AsciiEngine/core/draw_renderer.hpp"
+#include "AsciiEngine/core/notification.hpp"
 
 namespace AsciiEngine
 {
@@ -172,6 +173,16 @@ namespace AsciiEngine
 		 */
 		void playAudioSource(AudioSource *source);
 
+		/*
+		 * show a toast message
+		 * @ttl: duration of notification
+		 */
+		void showToast(const std::string &text, float ttl = 2.0f);
+		/*
+		 * clear all toast messages
+		 */
+		void clearToast();
+
 	private:
 		Engine() = default;
 		~Engine() = default;
@@ -191,9 +202,12 @@ namespace AsciiEngine
 
 		std::vector<std::unique_ptr<AsciiObject>> asciiObjects;
 		std::vector<std::unique_ptr<Scene>> scenes;
+		std::vector<Notification> notifications;
 		std::vector<std::function<void()>> onStartFns;
 		std::vector<std::function<void()>> onQuitFns;
 		unsigned int objectCounter = 0;
+
+		void handleNotifications();
 
 		// sort global objects list in ascending order by their layer
 		void sortObjectsByLayer();

@@ -140,6 +140,8 @@ namespace AsciiEngine
 			renderHud();
 			drawObjectSprites();
 
+			handleNotifications();
+
 			refresh();
 
 			int sleepTimeMs = TICK_INTERVAL_MS - frameTimer.elapsedMs();
