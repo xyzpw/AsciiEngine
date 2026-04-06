@@ -28,5 +28,5 @@ install:
 install_local:
 	mkdir -p build/install/lib
 	mkdir -p build/install/include/AsciiEngine
-	cp libAsciiEngine.so build/install/lib/
+	cp $(LIB) build/install/lib/
 	cp -r include/AsciiEngine build/install/include/AsciiEngine
