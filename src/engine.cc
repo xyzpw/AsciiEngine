@@ -60,6 +60,7 @@ namespace AsciiEngine
 
 		// update current terminal size variables
 		getmaxyx(stdscr, maxRows, maxColumns);
+		terminalSize = Vector2(maxColumns, maxRows);
 		midpoint = Vector2(getMidpointCol(), getMidpointRow());
 
 		/* run user-created startup calls */
