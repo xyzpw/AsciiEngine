@@ -33,6 +33,7 @@
 #include "math/vector2.hpp"
 #include "math/ray.hpp"
 #include "math/bounds.hpp"
+#include "math/random.hpp"
 #include "physics/raycast_hit.hpp"
 // IWYU pragma: end_keep
 
