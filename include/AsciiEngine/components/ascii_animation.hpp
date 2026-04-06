@@ -32,7 +32,7 @@ namespace AsciiEngine
 				float duration);
 
 		void play();
-		void play(bool loop = false);
+		void play(bool loop);
 		void stop();
 		// stop and reset animation
 		void reset();
