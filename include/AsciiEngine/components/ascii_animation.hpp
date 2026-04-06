@@ -60,6 +60,11 @@ namespace AsciiEngine
 		// return: number of frames in total
 		int getFrameCount() { return frames.size(); }
 
+		/*
+		 * return: sum of each frame's duration
+		 */
+		float computeDuration();
+
 	private:
 		bool playing = false;
 		int frameIndex = 0;

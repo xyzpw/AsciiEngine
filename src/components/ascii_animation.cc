@@ -91,4 +91,15 @@ namespace AsciiEngine
 		frameIndex = std::clamp(frameIndex, 0, (int)frames.size() - 1);
 		return &frames[frameIndex].sprite;
 	}
+
+	float AsciiAnimation::computeDuration()
+	{
+		float dur = 0;
+
+		for (const auto &fr : frames) {
+			dur += fr.duration;
+		}
+
+		return dur;
+	}
 }
