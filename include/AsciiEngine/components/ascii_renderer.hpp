@@ -16,7 +16,10 @@ namespace AsciiEngine
 
 		Sprite sprite;
 		Sprite *animationSprite = nullptr;
+
 		std::optional<int> colorPairId;
+		bool bold = false;
+		bool blink = false;
 
 		AsciiRenderer(int x, int y, std::vector<std::string> rows)
 			: position(x, y), sprite(rows) {}
@@ -63,5 +66,11 @@ namespace AsciiEngine
 
 	protected:
 		bool visible = true;
+
+		/*
+		 * set ncurses attr status
+		 * @value: true for attron, false for attroff
+		 */
+		void setAttrStatus(bool value);
 	};
 }

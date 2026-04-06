@@ -8,17 +8,11 @@ namespace AsciiEngine
 {
 	void AsciiRenderer::render()
 	{
-		bool hasCol = colorPairId.has_value();
-
-		if (hasCol) {
-			attron(COLOR_PAIR(colorPairId.value()));
-		}
+		setAttrStatus(true);
 
 		Utils::mvprintwSprite(position.x, position.y, *getSprite());
 
-		if (hasCol) {
-			attroff(COLOR_PAIR(colorPairId.value()));
-		}
+		setAttrStatus(false);
 	}
 
 	void AsciiRenderer::setColor(Color fg, Color bg)
@@ -55,5 +49,26 @@ namespace AsciiEngine
 		if (animationSprite == nullptr)
 			return &sprite;
 		return animationSprite;
+	}
+
+	void AsciiRenderer::setAttrStatus(bool value)
+	{
+		bool hasCol = colorPairId.has_value();
+		int colId = hasCol ? colorPairId.value() : -1;
+
+		if (hasCol && value)
+			attron(COLOR_PAIR(colId));
+		else if (hasCol && !value)
+			attroff(COLOR_PAIR(colId));
+
+		if (bold && value)
+			attron(A_BOLD);
+		else if (bold && !value)
+			attroff(A_BOLD);
+
+		if (blink && value)
+			attron(A_BLINK);
+		else if (blink && !value)
+			attroff(A_BLINK);
 	}
 }
