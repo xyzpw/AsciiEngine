@@ -3,6 +3,8 @@ An open source game engine for building terminal-based games on Linux using ncur
 
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/xyzpw/AsciiEngine/total)
 
+Read [docs/](docs/README.md) for installation steps and usage.
+
 ## Prerequisites
 - c++20
 - ncurses
