@@ -51,7 +51,7 @@ namespace AsciiEngine
 		/*
 		 * add a frame to the animation
 		 * @frame: sprite of frame
-		 * @durationMs: duration of frame in seconds
+		 * @duration: duration of frame in seconds
 		 */
 		void addFrame(Sprite frame, float duration);
 
