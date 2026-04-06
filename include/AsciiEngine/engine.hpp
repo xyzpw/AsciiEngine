@@ -35,7 +35,6 @@ namespace AsciiEngine
 
 		Debug debug;
 
-		int maxColumns, maxRows;
 		int getMaxColumns() { return maxColumns; }
 		int getMaxRows() { return maxRows; }
 		// column at display midpoint
@@ -206,6 +205,7 @@ namespace AsciiEngine
 
 		float fps = 0;
 
+		int maxColumns, maxRows;
 		Math::Vector2 midpoint;
 
 		MouseState mouseState;
