@@ -5,6 +5,8 @@
 
 namespace AsciiEngine::Utils
 {
+	bool running = false;
+
 	int getOrCreateColorPairId(Color fg, Color bg)
 	{
 		int maxId = 0;
@@ -22,7 +24,11 @@ namespace AsciiEngine::Utils
 		col.fg = fg;
 		col.bg = bg;
 
-		init_pair(col.pairId, static_cast<int>(fg), static_cast<int>(bg));
+		if (!running)
+			running = Engine::instance().isRunning();
+
+		if (running)
+			init_pair(col.pairId, (int)fg, (int)bg);
 		colorRegistry[col.pairId] = col;
 
 		return col.pairId;

@@ -58,6 +58,11 @@ namespace AsciiEngine
 		use_default_colors();
 		start_color();
 
+		/* initialize registered colors */
+		for (auto &[id, col] : colorRegistry) {
+			init_pair(id, (int)col.fg, (int)col.bg);
+		}
+
 		// update current terminal size variables
 		getmaxyx(stdscr, maxRows, maxColumns);
 		terminalSize = Vector2(maxColumns, maxRows);
