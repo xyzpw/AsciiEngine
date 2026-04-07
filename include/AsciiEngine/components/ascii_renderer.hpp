@@ -64,6 +64,8 @@ namespace AsciiEngine
 		bool isVisible() { return visible; }
 		void setVisible(bool value) { visible = value; }
 
+		void stopAllAnimations();
+
 	protected:
 		bool visible = true;
 

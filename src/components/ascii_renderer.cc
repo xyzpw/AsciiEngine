@@ -3,6 +3,8 @@
 #include "AsciiEngine/utils/colors.hpp"
 #include "AsciiEngine/utils/display.hpp"
 #include "AsciiEngine/engine.hpp"
+#include "AsciiEngine/ascii_object.hpp"
+#include "AsciiEngine/components/ascii_animation.hpp"
 
 namespace AsciiEngine
 {
@@ -49,6 +51,17 @@ namespace AsciiEngine
 		if (animationSprite == nullptr)
 			return &sprite;
 		return animationSprite;
+	}
+
+	void AsciiRenderer::stopAllAnimations()
+	{
+		if (animationSprite == nullptr)
+			return;
+
+		auto all = owner->getAllComponentsOfType<AsciiAnimation>();
+		for (auto &anim : all) {
+			anim->stop();
+		}
 	}
 
 	void AsciiRenderer::setAttrStatus(bool value)
