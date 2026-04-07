@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -fPIC -Iinclude -std=c++20 -Wall -Wextra
-LDFFLAGS = -lncurses -lSDL2 -lSDL2_mixer
+LDFLAGS = -lncurses -lSDL2 -lSDL2_mixer
 
 BUILD_DIR = build
 
@@ -13,7 +13,7 @@ all: $(LIB)
 
 
 $(LIB): $(OBJ)
-	$(CXX) -shared -o $@ $^ $(LDFFLAGS)
+	$(CXX) -shared -o $@ $^ $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: src/%.cc
 	mkdir -p $(dir $@)
