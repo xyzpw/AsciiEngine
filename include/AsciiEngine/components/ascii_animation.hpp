@@ -41,6 +41,11 @@ namespace AsciiEngine
 		bool isPlaying() { return playing; }
 
 		/*
+		 * return: true if animation is reversed
+		 */
+		bool isReversed() const { return reversed; }
+
+		/*
 		 * called every frame to keep the animation playing
 		 * @dt: time passed since last tick
 		 *
@@ -65,8 +70,20 @@ namespace AsciiEngine
 		 */
 		float computeDuration() const;
 
+		/*
+		 * reverse frames play order
+		 */
+		void reverse();
+
+		/*
+		 * set animation to be reversed or not
+		 * @value: true to reverse animation
+		 */
+		void setReversed(bool value);
+
 	private:
 		bool playing = false;
+		bool reversed = false;
 		int frameIndex = 0;
 	};
 }

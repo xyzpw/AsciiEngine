@@ -102,4 +102,19 @@ namespace AsciiEngine
 
 		return dur;
 	}
+
+	void AsciiAnimation::reverse()
+	{
+		std::reverse(frames.begin(), frames.end());
+
+		reversed = !reversed;
+	}
+
+	void AsciiAnimation::setReversed(bool value)
+	{
+		if (reversed == value)
+			return;
+
+		reverse();
+	}
 }
