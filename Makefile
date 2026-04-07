@@ -25,6 +25,10 @@ install:
 	cp $(LIB) /usr/local/lib/
 	cp -r include/AsciiEngine /usr/local/include/
 
+uninstall:
+	[ -f /usr/local/lib/$(LIB) ] && rm /usr/local/lib/$(LIB)
+	[ -d /usr/local/include/AsciiEngine ] && rm -rf /usr/local/include/AsciiEngine
+
 install_local:
 	mkdir -p build/install/lib
 	mkdir -p build/install/include/AsciiEngine
