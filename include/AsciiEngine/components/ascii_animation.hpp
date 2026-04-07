@@ -63,7 +63,7 @@ namespace AsciiEngine
 		/*
 		 * return: sum of each frame's duration
 		 */
-		float computeDuration();
+		float computeDuration() const;
 
 	private:
 		bool playing = false;

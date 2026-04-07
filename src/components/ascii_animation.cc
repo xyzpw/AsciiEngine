@@ -92,7 +92,7 @@ namespace AsciiEngine
 		return &frames[frameIndex].sprite;
 	}
 
-	float AsciiAnimation::computeDuration()
+	float AsciiAnimation::computeDuration() const
 	{
 		float dur = 0;
 
