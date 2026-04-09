@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 namespace AsciiEngine
 {
@@ -24,5 +25,14 @@ namespace AsciiEngine
 		}
 
 		int height() const { return pixels.size(); }
+
+		/*
+		 * reverse sprite string
+		 */
+		void reverse()
+		{
+			for (auto &px : pixels)
+				std::reverse(px.begin(), px.end());
+		}
 	};
 }
