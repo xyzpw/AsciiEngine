@@ -128,6 +128,18 @@ namespace AsciiEngine
 			return false;
 		}
 
+		template<typename ...T>
+		bool hasAllEnabledComponents()
+		{
+			return (hasEnabledComponent<T>() && ...);
+		}
+
+		template<typename ...T>
+		bool hasAnyEnabledComponent()
+		{
+			return (hasEnabledComponent<T>() || ...);
+		}
+
 	private:
 		AsciiObject& operator=(const AsciiObject&) = delete;
 
