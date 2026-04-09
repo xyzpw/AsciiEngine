@@ -12,7 +12,7 @@ namespace AsciiEngine
 		std::vector<AsciiObject*>& getContacts() { return contacts; }
 		bool hasContacts() { return contacts.size() > 0; }
 
-		virtual void onContact() {};
+		virtual void onContact(AsciiCollider *other) {}
 
 	private:
 		std::vector<AsciiObject*> contacts;

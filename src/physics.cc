@@ -144,17 +144,13 @@ namespace AsciiEngine
 					return;
 
 				auto rendB = contact->getComponent<AsciiRenderer>();
+				auto *otherColl = contact->getComponent<AsciiCollider>();
 
 				if (Utils::spritesOverlap(rendA, rendB)) {
 					hits.push_back(contact);
+					collider->onContact(otherColl);
 				}
 			}, hasComp);
-		}, hasComp);
-
-		callOnAllActiveObjects([&](AsciiObject *ao) {
-			auto coll = ao->getComponent<AsciiCollider>();
-			if (coll->hasContacts())
-				coll->onContact();
 		}, hasComp);
 	}
 
