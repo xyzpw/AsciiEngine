@@ -97,11 +97,13 @@ namespace AsciiEngine
 		if (colorId != -1)
 			attron(COLOR_PAIR(colorId));
 
-		for (int i = 0; i < width; ++i) {
+		/* draw left and right sides*/
+		for (int i = 0; i < height; ++i) {
 			mvaddch(top + i, left, '|');
 			mvaddch(top + i, right, '|');
 		}
 
+		/* draw top and bottom*/
 		std::string dash(width, '-');
 		Utils::mvprintwEachChar(left, top, dash);
 		Utils::mvprintwEachChar(left, bottom, dash);
