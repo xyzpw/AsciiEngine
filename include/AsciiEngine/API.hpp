@@ -42,5 +42,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	inline constexpr std::string_view version = "0.11.0";
+	inline constexpr std::string_view version = "0.12.0";
 }
