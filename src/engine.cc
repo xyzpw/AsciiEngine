@@ -418,6 +418,9 @@ namespace AsciiEngine
 
 			auto comps = ao->getAllComponentsOfType<Behaviour>();
 			for (auto *cmp : comps) {
+				if (!cmp->isEnabled())
+					continue;
+
 				(cmp->*method)();
 			}
 		}
