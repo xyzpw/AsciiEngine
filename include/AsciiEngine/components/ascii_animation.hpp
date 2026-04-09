@@ -86,9 +86,25 @@ namespace AsciiEngine
 		 */
 		void setReversed(bool value);
 
+		/*
+		 * @f: speed of animation
+		 *
+		 * Note: speed needs to be greater than 0.
+		 */
+		void setSpeed(float f)
+		{
+			if (f < 0)
+				f = 0;
+
+			speed = f;
+		}
+
+		float getSpeed() { return speed; }
+
 	private:
 		bool playing = false;
 		bool reversed = false;
 		int frameIndex = 0;
+		float speed = 1;
 	};
 }

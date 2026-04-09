@@ -68,7 +68,7 @@ namespace AsciiEngine
 			return nullptr;
 
 		auto *frame = &frames[frameIndex];
-		frame->activePlaytime += dt;
+		frame->activePlaytime += dt * speed;
 
 		if (frame->isWithinDuration())
 			return frame;
