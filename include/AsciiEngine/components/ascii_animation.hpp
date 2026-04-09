@@ -13,6 +13,11 @@ namespace AsciiEngine
 
 		AnimationFrame(Sprite sprite, float duration)
 			: sprite(sprite), duration(duration) {}
+
+		/*
+		 * return: true if active playtime is within duration
+		 */
+		bool isWithinDuration() { return activePlaytime <= duration; }
 	};
 
 	struct AsciiAnimation : Component {

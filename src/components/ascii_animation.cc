@@ -70,7 +70,7 @@ namespace AsciiEngine
 		auto *frame = &frames[frameIndex];
 		frame->activePlaytime += dt;
 
-		if (frame->activePlaytime <= frame->duration)
+		if (frame->isWithinDuration())
 			return frame;
 
 		frame->activePlaytime = 0;
