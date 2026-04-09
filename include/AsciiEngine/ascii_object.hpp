@@ -105,6 +105,12 @@ namespace AsciiEngine
 			return cmp != nullptr;
 		}
 
+		template<typename ...T>
+		bool hasComponents()
+		{
+			return (hasComponent<T>() && ...);
+		}
+
 		template<typename T>
 		bool hasEnabledComponent()
 		{
