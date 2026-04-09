@@ -106,7 +106,7 @@ namespace AsciiEngine
 		}
 
 		template<typename ...T>
-		bool hasComponents()
+		bool hasAllComponents()
 		{
 			return (hasComponent<T>() && ...);
 		}
