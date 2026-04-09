@@ -43,6 +43,9 @@ namespace AsciiEngine::Utils
 
 	bool spritesOverlap(const AsciiRenderer *a, const AsciiRenderer *b)
 	{
+		if (a == nullptr || b == nullptr)
+			return false;
+
 		const Sprite &sprA = *a->getSprite();
 		const Sprite &sprB = *b->getSprite();
 
