@@ -111,6 +111,12 @@ namespace AsciiEngine
 			return (hasComponent<T>() && ...);
 		}
 
+		template<typename ...T>
+		bool hasAnyComponent()
+		{
+			return (hasComponent<T>() || ...);
+		}
+
 		template<typename T>
 		bool hasEnabledComponent()
 		{
