@@ -30,4 +30,12 @@ namespace AsciiEngine::Math
 
 		return Vector2(x, y);
 	}
+
+	Vector2 randomVector2(const Vector2 &maxInclusive)
+	{
+		float x = randomNumber(0, maxInclusive.x);
+		float y = randomNumber(0, maxInclusive.y);
+
+		return Vector2(x, y);
+	}
 }

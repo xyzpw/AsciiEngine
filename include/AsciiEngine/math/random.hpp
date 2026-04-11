@@ -15,4 +15,9 @@ namespace AsciiEngine::Math
 	 */
 	Vector2 randomVector2();
 	Vector2 randomVector2(float minInclusive, float maxInclusive);
+
+	/*
+	 * return: random vector2 from 0 to max
+	 */
+	Vector2 randomVector2(const Vector2 &maxInclusive);
 }
