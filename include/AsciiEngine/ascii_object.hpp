@@ -18,8 +18,6 @@ namespace AsciiEngine
 
 		void setLayer(int n) { layer = n; }
 
-		std::vector<std::unique_ptr<Component>> components;
-
 		/*
 		 * Adds a controller component to move the renderer.
 		 * A renderer component must exist for this to work.
@@ -142,6 +140,8 @@ namespace AsciiEngine
 
 	private:
 		AsciiObject& operator=(const AsciiObject&) = delete;
+
+		std::vector<std::unique_ptr<Component>> components;
 
 		bool destroyed = false;
 	};
