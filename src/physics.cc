@@ -38,6 +38,7 @@ namespace AsciiEngine
 			RaycastHit hit;
 			hit.distance = (p - origin).magnitude();
 			hit.layer = ao->layer;
+			hit.point = p;
 			hit.object = ao;
 
 			hits.push_back(hit);
@@ -73,6 +74,7 @@ namespace AsciiEngine
 			if (hit != nullptr && Utils::hasVisibleRenderer(hit)) {
 				out.object = hit;
 				out.layer = hit->layer;
+				out.point = p;
 				out.distance = diff.magnitude();
 
 				return true;
@@ -107,6 +109,7 @@ namespace AsciiEngine
 				RaycastHit h;
 				h.object = ao;
 				h.layer = ao->layer;
+				h.point = p;
 				h.distance = diff.magnitude();
 
 				hits.push_back(h);
