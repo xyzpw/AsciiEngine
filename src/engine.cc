@@ -192,14 +192,11 @@ namespace AsciiEngine
 
 	void Engine::loadScene(const std::string &name)
 	{
-		for (size_t i = 0; i < scenes.size(); ++i) {
-			auto &sc = scenes[i];
-
-			if (!sc)
-				continue;
-
-			if (sc->name == name)
+		for (auto &sc : scenes) {
+			if (sc && sc->name == name) {
 				activeScene = sc.get();
+				break;
+			}
 		}
 	}
 
