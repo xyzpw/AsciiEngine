@@ -195,6 +195,7 @@ namespace AsciiEngine
 		for (auto &sc : scenes) {
 			if (sc && sc->name == name) {
 				activeScene = sc.get();
+				activeScene->callOnLoad();
 				break;
 			}
 		}
@@ -202,6 +203,10 @@ namespace AsciiEngine
 
 	void Engine::unloadScene()
 	{
+		if (activeScene == nullptr)
+			return;
+
+		activeScene->callOnUnload();
 		activeScene = nullptr;
 	}
 
