@@ -61,7 +61,7 @@ namespace AsciiEngine
 		/*
 		 * seconds since engine started
 		 */
-		float getUptime() { return uptimeTimer.elapsed().count(); }
+		float getUptime() { return uptimeTimer.elapsed(); }
 
 		float getFps() { return fps; }
 		void setFpsVisible(bool value) { fpsVisible = value; }

@@ -164,7 +164,7 @@ namespace AsciiEngine
 			previousKeyDown = delayedKeyDown;
 
 			frameTimer.stop();
-			deltaTime = frameTimer.elapsed().count();
+			deltaTime = frameTimer.elapsed();
 
 			/* compute moving average fps */
 			if (deltaTime > 0)

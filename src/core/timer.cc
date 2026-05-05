@@ -45,14 +45,17 @@ namespace AsciiEngine
 		start();
 	}
 
-	std::chrono::duration<float> Timer::elapsed() const
+	float Timer::elapsed() const
 	{
-		return std::chrono::duration<float>(steady::now() - startTime);
+		using std::chrono::duration;
+
+		float t = duration<float>(steady::now() - startTime).count();
+		return t;
 	}
 
 	int Timer::elapsedMs() const
 	{
-		auto dur = elapsed();
-		return std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
+		float dur = elapsed();
+		return dur * 1000;
 	}
 }

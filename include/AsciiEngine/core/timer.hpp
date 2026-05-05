@@ -19,8 +19,8 @@ namespace AsciiEngine
 		// clear all values and start the timer
 		void restart();
 
-		// return: chrono duration since the timer was started
-		std::chrono::duration<float> elapsed() const;
+		// return: seconds since the timer was started
+		float elapsed() const;
 		// return: milliseconds since the timer was started
 		int elapsedMs() const;
 
