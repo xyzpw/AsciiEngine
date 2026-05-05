@@ -50,7 +50,7 @@ namespace AsciiEngine
 		return std::chrono::duration<float>(steady::now() - startTime);
 	}
 
-	int Timer::elapsedMs()
+	int Timer::elapsedMs() const
 	{
 		auto dur = elapsed();
 		return std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();

@@ -22,7 +22,7 @@ namespace AsciiEngine
 		// return: chrono duration since the timer was started
 		std::chrono::duration<float> elapsed() const;
 		// return: milliseconds since the timer was started
-		int elapsedMs();
+		int elapsedMs() const;
 
 	private:
 		using steady = std::chrono::steady_clock;
