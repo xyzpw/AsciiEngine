@@ -1,15 +1,15 @@
-#include "AsciiEngine/core/timer.hpp"
+#include "AsciiEngine/core/stopwatch.hpp"
 #include <chrono>
 
 namespace AsciiEngine
 {
-	Timer::Timer(bool autostart)
+	Stopwatch::Stopwatch(bool autostart)
 	{
 		if (autostart)
 			start();
 	}
 
-	void Timer::start()
+	void Stopwatch::start()
 	{
 		if (active)
 			return;
@@ -18,7 +18,7 @@ namespace AsciiEngine
 		active = true;
 	}
 
-	void Timer::stop()
+	void Stopwatch::stop()
 	{
 		if (!active)
 			return;
@@ -29,14 +29,14 @@ namespace AsciiEngine
 		completionTimeMs = elapsedMs();
 	}
 
-	void Timer::clear()
+	void Stopwatch::clear()
 	{
 		startTime = steady::now();
 		stopTime = steady::now();
 		completionTimeMs = 0;
 	}
 
-	void Timer::restart()
+	void Stopwatch::restart()
 	{
 		if (active)
 			stop();
@@ -45,7 +45,7 @@ namespace AsciiEngine
 		start();
 	}
 
-	float Timer::elapsed() const
+	float Stopwatch::elapsed() const
 	{
 		using std::chrono::duration;
 
@@ -53,7 +53,7 @@ namespace AsciiEngine
 		return t;
 	}
 
-	int Timer::elapsedMs() const
+	int Stopwatch::elapsedMs() const
 	{
 		float dur = elapsed();
 		return dur * 1000;

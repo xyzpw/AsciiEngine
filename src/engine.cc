@@ -1,6 +1,6 @@
 #include "AsciiEngine/engine.hpp"
 #include "AsciiEngine/core/key_action.hpp"
-#include "AsciiEngine/core/timer.hpp"
+#include "AsciiEngine/core/stopwatch.hpp"
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/scene.hpp"
 #include "AsciiEngine/core/component.hpp"
@@ -28,7 +28,7 @@ namespace AsciiEngine
 	int previousKeyDown = -1;
 	float keyDownTime = 0.0f;
 
-	Timer keyTimer;
+	Stopwatch keyTimer;
 
 	Engine& Engine::instance()
 	{
@@ -75,7 +75,7 @@ namespace AsciiEngine
 		}
 
 		// used to stable frame delay time
-		Timer frameTimer(true);
+		Stopwatch frameTimer(true);
 		int keyRepeatRateMs = (KEYBOARD_REPEAT_RATE_MS * 2 + TICK_INTERVAL_MS);
 
 		uptimeTimer.start();

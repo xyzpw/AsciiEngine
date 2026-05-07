@@ -19,7 +19,7 @@
 #include "AsciiEngine/core/mouse_state.hpp"
 #include "AsciiEngine/core/draw_renderer.hpp"
 #include "AsciiEngine/core/notification.hpp"
-#include "AsciiEngine/core/timer.hpp"
+#include "AsciiEngine/core/stopwatch.hpp"
 
 namespace AsciiEngine
 {
@@ -202,7 +202,7 @@ namespace AsciiEngine
 
 		bool running = false;
 		int TICK_INTERVAL_MS = 16;
-		Timer uptimeTimer;
+		Stopwatch uptimeTimer;
 
 		float fps = 0;
 

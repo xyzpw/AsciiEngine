@@ -21,7 +21,7 @@
 #include "components/audio_source.hpp"
 #include "core/component.hpp"
 #include "core/key_action.hpp"
-#include "core/timer.hpp"
+#include "core/stopwatch.hpp"
 #include "core/signal.hpp"
 #include "core/mouse_state.hpp"
 #include "core/draw_renderer.hpp"

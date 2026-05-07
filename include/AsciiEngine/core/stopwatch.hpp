@@ -5,12 +5,12 @@
 namespace AsciiEngine
 {
 	/* can be used to time stuff */
-	struct Timer {
+	struct Stopwatch {
 		bool active = false;
 		int completionTimeMs;
 
 		// @autostart: start automatically if true
-		Timer(bool autostart = false);
+		Stopwatch(bool autostart = false);
 
 		// start timer if not started yet
 		void start();
