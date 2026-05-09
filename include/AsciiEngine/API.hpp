@@ -22,6 +22,7 @@
 #include "core/component.hpp"
 #include "core/key_action.hpp"
 #include "core/stopwatch.hpp"
+#include "core/countdown.hpp"
 #include "core/signal.hpp"
 #include "core/mouse_state.hpp"
 #include "core/draw_renderer.hpp"
