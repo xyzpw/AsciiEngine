@@ -15,6 +15,9 @@ namespace AsciiEngine
 
 	void Countdown::start()
 	{
+		if (isActive() || isComplete())
+			return;
+
 		paused = false;
 
 		if (!started) {
