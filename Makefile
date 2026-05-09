@@ -22,7 +22,7 @@ $(BUILD_DIR)/%.o: src/%.cc
 PREFIX ?= /usr/local
 
 install:
-	cp $(LIB) /usr/local/lib/
+	mv $(LIB) /usr/local/lib/
 	cp -r include/AsciiEngine /usr/local/include/
 
 uninstall:
