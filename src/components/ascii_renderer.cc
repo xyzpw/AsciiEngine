@@ -64,6 +64,11 @@ namespace AsciiEngine
 		}
 	}
 
+	bool AsciiRenderer::isAnimationPlaying() const
+	{
+		return animationSprite != nullptr;
+	}
+
 	void AsciiRenderer::setAttrStatus(bool value)
 	{
 		bool hasCol = colorPairId.has_value();

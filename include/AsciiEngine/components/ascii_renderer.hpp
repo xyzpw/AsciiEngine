@@ -66,6 +66,11 @@ namespace AsciiEngine
 
 		void stopAllAnimations();
 
+		/*
+		 * return: true if any animation is playing
+		 */
+		bool isAnimationPlaying() const;
+
 	protected:
 		bool visible = true;
 
