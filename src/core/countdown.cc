@@ -85,6 +85,6 @@ namespace AsciiEngine
 
 	bool Countdown::isActive()
 	{
-		return started && !paused;
+		return started && !paused && !isComplete();
 	}
 }
