@@ -17,14 +17,17 @@ using namespace AsciiEngine::Utils;
 
 namespace AsciiEngine
 {
-	std::vector<RaycastHit> Engine::rayCircle(const Vector2 &origin, float distance)
+	std::vector<RaycastHit> Engine::rayCircle(
+			const Vector2 &origin,
+			float radius,
+			std::function<bool(AsciiObject*)> condition)
 	{
-		if (distance < 0)
+		if (radius < 0)
 			return {};
 
 		std::vector<RaycastHit> hits;
 
-		float distSqr = distance * distance;
+		float distSqr = radius * radius;
 
 		callOnAllActiveObjects([&](AsciiObject *ao) {
 			auto rend = ao->getComponent<AsciiRenderer>();
@@ -33,6 +36,8 @@ namespace AsciiEngine
 			float diffSqrMag = (p - origin).sqrMagnitude();
 
 			if (diffSqrMag > distSqr)
+				return;
+			else if (condition && !condition(ao))
 				return;
 
 			RaycastHit hit;
@@ -53,7 +58,8 @@ namespace AsciiEngine
 		return hits;
 	}
 
-	bool Engine::raycast(const Ray &ray, float distance, RaycastHit &out)
+	bool Engine::raycast(const Ray &ray, float distance, RaycastHit &out,
+			     std::function<bool(AsciiObject*)> condition)
 	{
 		if (distance < 0)
 			return false;
@@ -72,6 +78,9 @@ namespace AsciiEngine
 			hit = getAsciiObjectAt(p);
 
 			if (hit != nullptr && Utils::hasVisibleRenderer(hit)) {
+				if (condition && !condition(hit))
+					continue;
+
 				out.object = hit;
 				out.layer = hit->layer;
 				out.point = p;

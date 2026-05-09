@@ -163,8 +163,28 @@ namespace AsciiEngine
 		// call function after $t$ seconds
 		void runAfterSeconds(float seconds, std::function<void()> call);
 
-		std::vector<Physics::RaycastHit> rayCircle(const Math::Vector2 &origin, float distance);
-		bool raycast(const Math::Ray &ray, float distance, Physics::RaycastHit &out);
+		/*
+		 * get objects within a radius
+		 * @condition: optional filter predicate, return true to accept hit
+		 *
+		 * return: all raycast hits
+		 */
+		std::vector<Physics::RaycastHit> rayCircle(
+				const Math::Vector2 &origin,
+				float radius,
+				std::function<bool(AsciiObject*)> condition = nullptr);
+
+		/*
+		 * raycast - cast a ray and find first hit
+		 * @out: raycast which the info will be outputted to if hit
+		 * @condition: optional filter predicate, return true to accept hit
+		 *
+		 * return: true if hit found
+		 */
+		bool raycast(const Math::Ray &ray, float distance,
+			     Physics::RaycastHit &out,
+			     std::function<bool(AsciiObject*)> condition = nullptr);
+
 		std::vector<Physics::RaycastHit> raycastAll(const Math::Ray &ray, float distance);
 
 		/* return: object of which occurs at this point on terminal */
