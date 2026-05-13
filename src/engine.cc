@@ -336,6 +336,19 @@ namespace AsciiEngine
 		return result;
 	}
 
+	std::vector<AsciiObject*> Engine::getAllAsciiObjects(
+			std::function<bool(AsciiObject*)> predicate)
+	{
+		std::vector<AsciiObject*> result;
+
+		for (auto &ao : asciiObjects) {
+			if (predicate && predicate(ao.get()))
+				result.push_back(ao.get());
+		}
+
+		return result;
+	}
+
 	std::vector<AsciiObject*> Engine::getAllAsciiObjectsByName(const std::string &name)
 	{
 		std::vector<AsciiObject*> result;

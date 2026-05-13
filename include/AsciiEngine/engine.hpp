@@ -192,6 +192,16 @@ namespace AsciiEngine
 		AsciiObject* getAsciiObjectAt(const Math::Vector2 &v);
 
 		std::vector<AsciiObject*> getAllAsciiObjects();
+
+		/*
+		 * find all ascii objects on condition
+		 * @predicate: filter, return true for included objects
+		 *
+		 * return: all matching objects
+		 */
+		std::vector<AsciiObject*> getAllAsciiObjects(
+				std::function<bool(AsciiObject*)> predicate);
+
 		std::vector<AsciiObject*> getAllAsciiObjectsByName(const std::string &name);
 		AsciiObject* getAsciiObjectByName(const std::string &name);
 		AsciiObject* getAsciiObjectById(int id);
