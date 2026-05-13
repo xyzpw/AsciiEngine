@@ -39,6 +39,11 @@ namespace AsciiEngine::Math
 		return Vector2(std::floor(x), std::floor(y));
 	}
 
+	Vector2 Vector2::directionTo(const Vector2 &other) const
+	{
+		return (other - *this).normalized();
+	}
+
 	std::ostream& operator<<(std::ostream &os, const Vector2 &v2) {
 		os << "(" << v2.x << ", " << v2.y << ")";
 		return os;

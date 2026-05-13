@@ -24,6 +24,14 @@ namespace AsciiEngine::Math
 		Vector2 rounded() const;
 		Vector2 floored() const;
 
+		/*
+		 * get direction vector to another point
+		 * @other: destination point
+		 *
+		 * return: normalized direction from this point to another
+		 */
+		Vector2 directionTo(const Vector2 &other) const;
+
 		Vector2 operator+(const Vector2& other) const {
 			return Vector2(x + other.x, y + other.y);
 		}
