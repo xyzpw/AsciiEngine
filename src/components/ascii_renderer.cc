@@ -10,6 +10,7 @@ namespace AsciiEngine
 {
 	void AsciiRenderer::render()
 	{
+		validatePositionWithParent();
 		setAttrStatus(true);
 
 		Utils::mvprintwSprite(position.x, position.y, *getSprite());
@@ -67,6 +68,21 @@ namespace AsciiEngine
 	bool AsciiRenderer::isAnimationPlaying() const
 	{
 		return animationSprite != nullptr;
+	}
+
+	void AsciiRenderer::setParent(AsciiRenderer *p)
+	{
+		if (p != this) {
+			parent = p;
+		}
+	}
+
+	void AsciiRenderer::validatePositionWithParent()
+	{
+		if (!hasParent())
+			return;
+
+		position = parent->position + localPosition;
 	}
 
 	void AsciiRenderer::setAttrStatus(bool value)

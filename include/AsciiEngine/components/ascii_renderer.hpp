@@ -13,6 +13,7 @@ namespace AsciiEngine
 {
 	struct AsciiRenderer : Component {
 		Math::Vector2 position;
+		Math::Vector2 localPosition;
 
 		Sprite sprite;
 		Sprite *animationSprite = nullptr;
@@ -71,8 +72,21 @@ namespace AsciiEngine
 		 */
 		bool isAnimationPlaying() const;
 
+		void setParent(AsciiRenderer *p);
+		void removeParent() { parent = nullptr; }
+
+		bool hasParent() const { return parent != nullptr; }
+		AsciiRenderer *getParent() { return parent; }
+
 	protected:
 		bool visible = true;
+		AsciiRenderer *parent = nullptr;
+
+		/*
+		 * validate the position relative to parent
+		 */
+		void validatePositionWithParent();
+
 
 		/*
 		 * set ncurses attr status
