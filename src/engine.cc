@@ -326,14 +326,7 @@ namespace AsciiEngine
 
 	std::vector<AsciiObject*> Engine::getAllAsciiObjects()
 	{
-		int size = asciiObjects.size();
-		std::vector<AsciiObject*> result(size);
-
-		for (int i = 0; i < size; ++i) {
-			result[i] = asciiObjects[i].get();
-		}
-
-		return result;
+		return getAllAsciiObjects([&](AsciiObject*) { return true; });
 	}
 
 	std::vector<AsciiObject*> Engine::getAllAsciiObjects(
