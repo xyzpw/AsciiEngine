@@ -13,7 +13,7 @@ namespace AsciiEngine::Utils
 {
 	bool isPointInSprite(const AsciiRenderer *rend, int col, int row)
 	{
-		const Sprite &spr = rend->sprite;
+		const Sprite &spr = *rend->getSprite();
 		const int &rendCol = rend->position.x;
 		const int &rendRow = rend->position.y;
 
