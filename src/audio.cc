@@ -36,7 +36,7 @@ namespace AsciiEngine
 
 		/* free all audio chunks in each component*/
 		callOnAllActiveObjects([&](AsciiObject *ao) {
-			auto audio = ao->getAllComponentsOfType<AudioSource>();
+			auto audio = ao->getAllComponents<AudioSource>();
 
 			for (auto *src : audio)
 				src->freeChunk();

@@ -106,7 +106,7 @@ namespace AsciiEngine
 
 		callOnAllActiveObjects([&](AsciiObject *ao) {
 			auto *rend = ao->getComponent<AsciiRenderer>();
-			auto animLs = ao->getAllComponentsOfType<AsciiAnimation>();
+			auto animLs = ao->getAllComponents<AsciiAnimation>();
 
 			rend->animationSprite = nullptr;
 

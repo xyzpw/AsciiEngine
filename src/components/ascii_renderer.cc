@@ -59,7 +59,7 @@ namespace AsciiEngine
 		if (animationSprite == nullptr)
 			return;
 
-		auto all = owner->getAllComponentsOfType<AsciiAnimation>();
+		auto all = owner->getAllComponents<AsciiAnimation>();
 		for (auto &anim : all) {
 			anim->stop();
 		}

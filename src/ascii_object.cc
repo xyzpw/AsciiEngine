@@ -9,7 +9,7 @@ namespace AsciiEngine
 		destroyed = true;
 
 		/* notify behaviours this object was destroyed*/
-		for (auto &cmp : getAllComponentsOfType<Behaviour>()) {
+		for (auto &cmp : getAllComponents<Behaviour>()) {
 			if (cmp->isEnabled())
 				cmp->onDestroy();
 		}

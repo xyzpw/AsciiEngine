@@ -63,7 +63,7 @@ namespace AsciiEngine
 		}
 
 		template<typename T>
-		std::vector<T*> getAllComponentsOfType()
+		std::vector<T*> getAllComponents()
 		{
 			std::vector<T*> result;
 

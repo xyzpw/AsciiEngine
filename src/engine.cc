@@ -382,7 +382,7 @@ namespace AsciiEngine
 			if (!ao->isActiveAndEnabled())
 				continue;
 
-			auto comps = ao->getAllComponentsOfType<ConditionalAction>();
+			auto comps = ao->getAllComponents<ConditionalAction>();
 			for (auto *cmp : comps) {
 				cmp->tryExecute();
 			}
@@ -410,7 +410,7 @@ namespace AsciiEngine
 	void Engine::notifyBehavioursInput(int key)
 	{
 		callOnAllActiveObjects([&](AsciiObject *ao) {
-			auto all = ao->getAllComponentsOfType<Behaviour>();
+			auto all = ao->getAllComponents<Behaviour>();
 			for (auto &cmp : all) {
 				if (cmp->isEnabled())
 					cmp->onInput(key);
@@ -424,7 +424,7 @@ namespace AsciiEngine
 			if (!ao->isActiveAndEnabled())
 				continue;
 
-			auto comps = ao->getAllComponentsOfType<Behaviour>();
+			auto comps = ao->getAllComponents<Behaviour>();
 			for (auto *cmp : comps) {
 				if (!cmp->isEnabled())
 					continue;

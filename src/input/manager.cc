@@ -33,7 +33,7 @@ namespace AsciiEngine
 			if (!AO->isActiveAndEnabled())
 				continue;
 
-			auto controllers = AO->getAllComponentsOfType<Controller>();
+			auto controllers = AO->getAllComponents<Controller>();
 			for (auto *ctrl : controllers) {
 				processController(ctrl);
 			}
