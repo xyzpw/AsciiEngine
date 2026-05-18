@@ -83,11 +83,15 @@ namespace AsciiEngine
 	{
 		sortObjectsByLayer();
 
+		auto pred = [&](AsciiObject *a) {
+			return a->hasEnabledComponent<AsciiRenderer>();
+		};
+
 		/* draw to screen */
 		callOnAllActiveObjects([&](AsciiObject *it) {
 			auto rend = it->getComponent<AsciiRenderer>();
 			rend->render();
-		}, Utils::hasVisibleRenderer);
+		}, pred);
 	}
 
 	void Engine::renderFps()

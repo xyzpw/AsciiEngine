@@ -11,6 +11,10 @@ namespace AsciiEngine
 	void AsciiRenderer::render()
 	{
 		validatePositionWithParent();
+
+		if (!visible)
+			return;
+
 		setAttrStatus(true);
 
 		Utils::mvprintwSprite(position.x, position.y, *getSprite());
