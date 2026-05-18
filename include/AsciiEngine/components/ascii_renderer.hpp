@@ -72,6 +72,11 @@ namespace AsciiEngine
 		 */
 		bool isAnimationPlaying() const;
 
+		/*
+		 * return: name of the current animation being played
+		 */
+		std::string getAnimationName() const;
+
 		void setParent(AsciiRenderer *p);
 		void removeParent() { parent = nullptr; }
 

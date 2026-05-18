@@ -74,6 +74,17 @@ namespace AsciiEngine
 		return animationSprite != nullptr;
 	}
 
+	std::string AsciiRenderer::getAnimationName() const
+	{
+		for (auto &c : owner->getAllComponents<AsciiAnimation>()) {
+			if (c->isPlaying() && c->getSprite() == animationSprite)
+				return c->name;
+		}
+
+		return "";
+	}
+
+
 	void AsciiRenderer::setParent(AsciiRenderer *p)
 	{
 		if (p != this) {
