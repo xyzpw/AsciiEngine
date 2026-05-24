@@ -69,14 +69,12 @@ namespace AsciiEngine
 
 	void Engine::renderHud()
 	{
-		auto cond = [&](AsciiObject *a) {
-			return a->hasEnabledComponent<Hud>();
-		};
-
 		callOnAllActiveObjects([&](AsciiObject *ao) {
-			auto *hud = ao->getComponent<Hud>();
-			hud->render();
-		}, cond);
+			for (auto &c : ao->getAllComponents<Hud>()) {
+				if (c->isEnabled())
+					c->render();
+			}
+		});
 	}
 
 	void Engine::drawObjectSprites()
