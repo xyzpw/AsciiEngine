@@ -20,6 +20,7 @@
 #include "AsciiEngine/core/draw_renderer.hpp"
 #include "AsciiEngine/core/notification.hpp"
 #include "AsciiEngine/core/stopwatch.hpp"
+#include "AsciiEngine/core/save_manager.hpp"
 
 namespace AsciiEngine
 {
@@ -207,6 +208,11 @@ namespace AsciiEngine
 		AsciiObject* getAsciiObjectById(int id);
 
 		DrawRenderer draw;
+
+		/*
+		 * manager for saving user data
+		 */
+		SaveManager saveManager;
 
 		/*
 		 * play audio of source

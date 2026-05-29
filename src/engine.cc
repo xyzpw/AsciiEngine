@@ -44,6 +44,7 @@ namespace AsciiEngine
 		running = true;
 
 		initAudio();
+		saveManager.load();
 
 		setlocale(LC_ALL, "");
 

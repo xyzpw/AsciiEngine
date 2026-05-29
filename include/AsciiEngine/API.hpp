@@ -27,6 +27,7 @@
 #include "core/mouse_state.hpp"
 #include "core/draw_renderer.hpp"
 #include "core/notification.hpp"
+#include "core/save_manager.hpp"
 #include "utils/colors.hpp"
 #include "utils/display.hpp"
 #include "utils/math.hpp"
@@ -43,5 +44,5 @@
 namespace AsciiEngine
 {
 	// version of API
-	inline constexpr std::string_view version = "0.17.0";
+	inline constexpr std::string_view version = "0.18.0";
 }
