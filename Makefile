@@ -34,3 +34,8 @@ install_local:
 	mkdir -p build/install/include/AsciiEngine
 	cp $(LIB) build/install/lib/
 	cp -r include/AsciiEngine build/install/include/AsciiEngine
+
+getversion:
+	@[ -f /usr/local/include/AsciiEngine/API.hpp ] && \
+		grep --color=never -oP '(?<=version = ").*?(?=";)' /usr/local/include/AsciiEngine/API.hpp || \
+		echo "not installed"
