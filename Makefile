@@ -29,6 +29,15 @@ uninstall:
 	[ -f /usr/local/lib/$(LIB) ] && rm /usr/local/lib/$(LIB)
 	[ -d /usr/local/include/AsciiEngine ] && rm -rf /usr/local/include/AsciiEngine
 
+reinstall:
+	@echo uninstalling...
+	@[ -f /usr/local/lib/$(LIB) ] && rm /usr/local/lib/$(LIB)
+	@[ -d /usr/local/include/AsciiEngine ] && rm -rf /usr/local/include/AsciiEngine
+	@echo installing...
+	@mv $(LIB) /usr/local/lib/
+	@cp -r include/AsciiEngine /usr/local/include/
+	@echo done
+
 install_local:
 	mkdir -p build/install/lib
 	mkdir -p build/install/include/AsciiEngine
