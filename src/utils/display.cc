@@ -3,6 +3,7 @@
 #include "AsciiEngine/math/vector2.hpp"
 #include "AsciiEngine/ascii_object.hpp"
 #include "AsciiEngine/utils/text.hpp"
+#include "AsciiEngine/utils/colors.hpp"
 #include <string>
 #include <vector>
 #include <ncurses.h>
@@ -95,6 +96,15 @@ namespace AsciiEngine::Utils
 			if (c != ' ')
 				mvprintw(row, col + i, "%c", c);
 		}
+	}
+
+	void mvprintwEachChar(int col, int row, const std::string &str,
+			      Color fgColor, Color bgColor)
+	{
+		int pair = getOrCreateColorPairId(fgColor, bgColor);
+		attron(COLOR_PAIR(pair));
+		mvprintwEachChar(col, row, str);
+		attroff(COLOR_PAIR(pair));
 	}
 
 	void mvprintwSprite(int col, int row, const Sprite &spr)

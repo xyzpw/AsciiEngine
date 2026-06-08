@@ -35,6 +35,8 @@ namespace AsciiEngine::Utils
 	 * ignores spaces but keeps the positioning correct.
 	 */
 	void mvprintwEachChar(int col, int row, const std::string &str);
+	void mvprintwEachChar(int col, int row, const std::string &str,
+			      Color fgColor, Color bgColor = Color::None);
 
 	/*
 	 * prints the sprite
