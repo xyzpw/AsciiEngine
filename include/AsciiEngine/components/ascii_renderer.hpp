@@ -37,6 +37,12 @@ namespace AsciiEngine
 		AsciiRenderer(const Math::Vector2 &point, const std::string &spr) :
 			position(point), sprite(Sprite( { spr })) {}
 
+		AsciiRenderer(const std::string &spr)
+			: position(0,0), sprite(Sprite({spr})) {}
+
+		AsciiRenderer(const Sprite &spr)
+			: position(0,0), sprite(spr) {}
+
 		AsciiRenderer(int x, int y) : position(x, y) {}
 
 		void render();
