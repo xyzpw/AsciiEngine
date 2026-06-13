@@ -256,6 +256,7 @@ namespace AsciiEngine
 		std::vector<Notification> notifications;
 		std::vector<std::function<void()>> onStartFns;
 		std::vector<std::function<void()>> onQuitFns;
+		std::vector<std::function<void()>> afterFrameCalls;
 		unsigned int objectCounter = 0;
 
 		void handleNotifications();

@@ -15,13 +15,7 @@ namespace AsciiEngine
 		if (!call)
 			return;
 
-		std::thread([this, call]() {
-			while (currentlyInFrame) {
-				std::this_thread::yield();
-			}
-
-			call();
-		}).detach();
+		afterFrameCalls.push_back(call);
 	}
 
 	void Engine::runAfterSeconds(float seconds, std::function<void()> call)

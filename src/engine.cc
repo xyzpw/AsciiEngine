@@ -172,6 +172,12 @@ namespace AsciiEngine
 				fps += 0.05f * (1.0f / deltaTime - fps);
 
 			currentlyInFrame = false;
+
+			/* call queued functions for end of frame */
+			for (auto &call : afterFrameCalls) {
+				call();
+			}
+			afterFrameCalls.clear();
 		}
 
 		cleanAudio();
