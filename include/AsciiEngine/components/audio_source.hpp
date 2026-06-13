@@ -28,9 +28,17 @@ namespace AsciiEngine
 		 */
 		bool isAudioLoaded() { return hasSound; }
 
+		float getVolume() { return volume; }
+
+		/*
+		 * set volume of audio
+		 */
+		void setVolume(float f);
+
 	private:
 		std::string filename;
 		Mix_Chunk *audioChunk;
 		bool hasSound = false;
+		float volume = 1;
 	};
 }

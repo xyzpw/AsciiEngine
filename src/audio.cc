@@ -15,8 +15,14 @@ namespace AsciiEngine
 			source->loadAudioFile();
 
 		auto sound = source->getAudioChunk();
-		if (sound != nullptr)
-			Mix_PlayChannel(-1, sound, 0);
+		int volume = source->getVolume() * MIX_MAX_VOLUME;
+
+		if (sound != nullptr) {
+			int channel = Mix_PlayChannel(-1, sound, 0);
+			if (channel != -1) {
+				Mix_Volume(channel, volume);
+			}
+		}
 	}
 
 	void Engine::initAudio()

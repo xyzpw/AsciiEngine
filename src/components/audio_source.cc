@@ -2,6 +2,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL.h>
 #include <string>
+#include <algorithm>
 
 namespace AsciiEngine
 {
@@ -49,5 +50,10 @@ namespace AsciiEngine
 		audioChunk = Mix_LoadWAV(filename.c_str());
 		if (audioChunk)
 			hasSound = true;
+	}
+
+	void AudioSource::setVolume(float f)
+	{
+		volume = std::clamp(f, 0.0f, 1.0f);
 	}
 }
