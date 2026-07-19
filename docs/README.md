@@ -1,6 +1,10 @@
 # Getting Started
 After completing installation, read [First Game](first-game.md).
 
+Recommended learning order:
+- [Objects](objects.md)
+- [Components](components.md)
+
 ## Installation
 Build the project:
 ```bash
